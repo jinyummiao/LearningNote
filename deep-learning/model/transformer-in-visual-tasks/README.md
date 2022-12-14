@@ -1,0 +1,16 @@
+# Transformer in Visual Tasks
+
+
+
+| Method         | From        | Description                                                                                                                                                                                                            |
+| -------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Survey         | arxiv 2021  | Visual Transformer的一篇综述                                                                                                                                                                                                |
+| Token ViT      | arxiv 2020  | 利用CNN提取低层特征图，聚类获得少量visual tokens来表示图像，输入transformer，增强tokens，然后reproject到原特征图，增强特征表征能力，在分类和分割任务上提升了baseline的效果                                                                                                         |
+| LoFTR          | CVPR 2021   | 利用FPN提取coarse和fine的特征图，利用LoFTR module(多层self-和cross-attention)来增强描述子的表征能力，进行coarse-level matching，得到的匹配在fine特征图中找到对应区域，输入LoFTR module进行增强，计算correlation matrix，参考SuperGlue的方式用optimal transport的方法计算fine-level matches |
+| ViT            | ICLR 2021   | 将Transformer结构直接用于图像分类任务，将图像划分为等大小的图像块，经过展平、映射得到embeddings，加入position embeddings和class tokens，输入transformer encoder，证明transformer需要在大数据集上预训练，在downstream任务上fine-tuning                                                 |
+| VidTr          | arxiv 2021  | 在视频动作分类任务中应用transformer，使用时空两个维度的注意力机制，为了减少内存消耗，将时空注意力机制解耦，先进行时间维度上的注意力，并下采样具有信息的帧，然后进行空间维度的注意力                                                                                                                        |
+| CaTiLoc        | ICASSP 2021 | 用MobileNet提取特征图，输入ViT，输出接全连接层，估计3D位置和4D四元数信息                                                                                                                                                                           |
+| MLP-Mixer      | arxiv 2021  | 提出了一种完全基于MLP的图像分类结构，包含两种MLP块，分别为channel-mixing MLPs和token-mixing MLPs                                                                                                                                                  |
+| MS-Transformer | arxiv 2021  | 使用两个彼此独立的transformer来分别编码与位置和旋转有关的信息，分别预测位置和旋转。提出一种单一模型多场景位姿回归框架，输出当前图像在不同场景中的可能状态，挑选当前场景下的状态用于位姿回归，用位姿回归和分类两种监督同时训练                                                                                                   |
+| MaskFormer     | NIPS 2021   | 提出一种统一的基于mask classification的分割模型，适用于语义级别和实例级别。模型包括pixel-level module、transformer module和segmentation module。模型预测了多个二进制mask及对应的分类概率，对应每个分割区域                                                                           |
+| Mask2Former    | arxiv 2021  | 在MaskFormer的基础上提出了一些改进，包括：在Transformer decoder中用masked attention代替cross-attention，将attention限制在前一层预测mask的范围内；采用多分辨率特征，帮助检测小目标或小区域；交换self-和cross-attention的顺序；去掉dropout；在少量采样点上计算mask loss，节省训练开支                       |
