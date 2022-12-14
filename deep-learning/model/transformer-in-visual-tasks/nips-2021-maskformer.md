@@ -26,7 +26,7 @@ description: Per-Pixel Classification is Not All You Need for Semantic Segmentat
 
 对于per-pixel classification的模型来说，分割模型要预测$H\times W$图像中每个像素的K个类别的分布概率：$$y={\{p_i|p_i \in \triangle^K\}}^{H \cdot W}_{i=1}$$，其中$$\triangle^K$$是K维的概率向量。训练一个per-pixel classification模型的过程为：给定每个像素的真值类别$$g^{gt}={\{y^{gt}_i|y^{gt}i \in \{1,...,K\}\}}^{H \cdot W}{i=1}$$，用交叉熵损失（负对数似然）来训练网络：&#x20;
 
-![](<../../../.gitbook/assets/image (568).png>)
+![](<../../../.gitbook/assets/image (199).png>)
 
 #### Mask classification formulation
 
@@ -42,7 +42,7 @@ mask classification将分割任务分为：1.将图像划分为N个区域（N不
 
 #### MaskFormer
 
-![](<../../../.gitbook/assets/image (1054).png>)
+![](<../../../.gitbook/assets/image (159).png>)
 
 MaskFormer模型输出N个概率-mask对$$z={{(p_i,m_i)}}^N_{i=1}$$，该模型包含三个模块，1.一个pixel-level模块来提取per-pixel embeddings，用于生成二进制mask；2.一个transformer模块，是一组Transformer decoder层的堆叠，生成N个per-segment embeddings；3.一个segmentation模块，从这些embeddings中生成预测$${{(p_i,m_i)}}^N_{i=1}$$。在inference时，$$p_i$$和$$m_i$$一起用于最后的预测。
 
@@ -74,9 +74,9 @@ MaskFormer模型输出N个概率-mask对$$z={{(p_i,m_i)}}^N_{i=1}$$，该模型�
 
 ![](<../../../.gitbook/assets/image (524).png>)
 
-![](<../../../.gitbook/assets/image (209).png>)
+![](<../../../.gitbook/assets/image (680).png>)
 
-![](<../../../.gitbook/assets/image (844).png>)
+![](<../../../.gitbook/assets/image (303).png>)
 
 ![](<../../../.gitbook/assets/image (842).png>)
 

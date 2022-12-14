@@ -102,7 +102,7 @@ As way to measure the similarity of the local optima found by the different pGT 
 
 作者根据SfM pGT的重叠视野来选择图像对：令$$|P_{AB}|$$为图A和图B都能观测到的3D点，$$|P_{A}|$$为图A中可见的3D点，当$$|P_{AB}|/max(|P_A|,|P_B|) \ge 0.3$$时，图A和图B构成一组图像对。
 
-![](<../../../.gitbook/assets/image (220).png>)
+![](<../../../.gitbook/assets/image (275).png>)
 
 图4展示了累计直方图。作者分别测试了两张训练集图像和一张训练集图像与一张测试集图像。由于图像是连续采集的，训练集图像间的视角变化相比训练集-测试集图像间的视角变化要小，因此test/train图像对的误差要更大些。
 
@@ -124,7 +124,7 @@ DSAC\* is a learning-based scene coordinate regression approach, where a neural 
 
 ### Results
 
-![](<../../../.gitbook/assets/image (281).png>)
+![](<../../../.gitbook/assets/image (261).png>)
 
 对于原本的pGT，基于深度的DSAC\*(+D)明显比其他算法更好。基于深度的DenseVLAD+R2D2(+D)在所有基于局部特征的方法中表现最好。使用SIFT特征的AS表现最差。
 

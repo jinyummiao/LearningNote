@@ -50,7 +50,7 @@ description: 'GN-Net: The Gauss-Newton Loss for Multi-Weather Relocalization'
 
 3.根据堆叠的残差向量r、堆叠的Jacobian J和一个对角权重矩阵W，Gaussian系统和步长$$\delta$$计算如下：
 
-![](<../../../.gitbook/assets/image (466).png>)
+![](<../../../.gitbook/assets/image (439) (2).png>)
 
 这一偏导数和标准的图像对齐（DSO）是相近的。在计算Jacobian时，需要用到特征的数值偏导$$\frac{F'(p'_i)}{p'_i}$$。原本图像是非凸的，所以这一偏导只在很小的区域内​有效，这导致直接图像对齐需要一个较好的初始化结果。为了解决这一问题，作者使用了金字塔策略。作者通过训练网络让正确匹配附近区域有较好的平滑性。
 
@@ -60,13 +60,13 @@ description: 'GN-Net: The Gauss-Newton Loss for Multi-Weather Relocalization'
 
 这些独立的GN系统可以与6DOF位姿估计的GN系统相结合：
 
-![](<../../../.gitbook/assets/image (381).png>)
+![](<../../../.gitbook/assets/image (423).png>)
 
 The difference between our simplified systems and the one for pose estimation is only the derivative with respect to the pose, which is much smoother than the image derivative. This means that if the Gauss-Newton algorithm performs well on individual pixels it will also work well on estimating the full pose. Therefore, we propose to train a neural network on correspondences which are easy to obtain, e.g. using a SLAM method, and then later apply it for pose estimation. We argue that training on these individual points is superior to training on the 6DOF pose. The estimated pose can be correct even if some points contribute very wrong estimates. This increases robustness at runtime but when training we want to improve the information each point provides. Also, when training on the 6DOF pose we only have one supervision signal for each image pair, whereas when training on correspondences we have over a thousand signals. Hence, our method exhibits exceptional generalization capabilities as shown in the results section.
 
 **The probabilistic Gauss-Newton loss** 公式6所描述的线性系统定义了一个二维的高斯概率分布，这是因为GN算法本质上是在最小二乘形式中寻找具有最大概率的解。这可以用高斯分布的负对数似然来推导：
 
-![](<../../../.gitbook/assets/image (478).png>)
+![](<../../../.gitbook/assets/image (396).png>)
 
 其中x是像素坐标，$$\mu$$​是均值。
 

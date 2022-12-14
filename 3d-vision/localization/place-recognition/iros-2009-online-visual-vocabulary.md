@@ -29,19 +29,19 @@
 1. 词典初始化阶段。词典由前m张图像中的elementary cluster初始化，这些cluster逐渐合并，直到收敛（合并的准则在后文中详细描述）；
 2. 词典更新阶段。当机器人移动，机器人获得了场景中的更多视觉信息，这些信需要包含到词典中。因此，对于每m张图像，新的elementary cluster被提取出来。这些cluster被加入到词典中，然后全部clusters逐渐合并，直到收敛。这一步每输入m张图像重复一次。&#x20;
 
-![](<../../../.gitbook/assets/1615277597694 (1).png>)
+![](../../../.gitbook/assets/1615277597694.png)
 
 #### Cluster Characterization
 
 词典中每个cluster由它在N维空间中的位置和大小（半径）定义。这样提供了关于cluster分布和clusters间交互的完整信息。因为elementary cluster是由特征跟踪获得的，我们这样定义：&#x20;
 
-![](../../../.gitbook/assets/1615278043519.png)
+![](<../../../.gitbook/assets/1615278043519 (1).png>)
 
 其中，$$C_k$$是cluster的中心值，由图像i中场景点k的平均特征向量给出。$$R_k$$是点k的协方差矩阵。
 
 每次cluster合并是指两个cluster的合并（如图2）。新产生的cluster的参数直接从合并的clusters中获得，不需要重新从初始数据开始计算。这样做，节省了计算时间和内存消耗，尤其是在某些大的cluster中。新cluster的位置和大小由下式给出:&#x20;
 
-![](../../../.gitbook/assets/1615278465223.png)
+![](<../../../.gitbook/assets/1615278465223 (1).png>)
 
 其中，$$C_a$$和$$C_b$$分别为要合并的两个cluster的中心值，这两个cluster分别有$$n_a$$和$$n_b$$个elements。
 
@@ -49,11 +49,11 @@
 
 一般的距离方法依赖于相似度度量方法，比如欧拉距离、曼哈顿距离、切比雪夫距离、马氏距离、向量夹角等，但是这些距离只是局部的分析了数据，所以在高维的聚类空间中是次优的。因此，作者提出一种新的距离方法，将数据的全局分布也考虑进来。该方法基于Fisher's linear disciminant，将数据聚类来最大化目标函数：&#x20;
 
-![](../../../.gitbook/assets/1615279001618.png)
+![](<../../../.gitbook/assets/1615279001618 (1).png>)
 
 其中tr()求得迹，$$S_B$$表示**between clusters scatter matrix**，而$$S_W$$表示**within clusters scatter matrix**，由下式求得&#x20;
 
-![](<../../../.gitbook/assets/1615279185925 (1).png>)
+![](../../../.gitbook/assets/1615279185925.png)
 
 其中C是所有数据的全局中心值。N表示所有element的数量，而$n\_k$是cluster k中包含的element数量。 实际上，合并过程可以描述为：
 

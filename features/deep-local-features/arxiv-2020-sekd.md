@@ -52,7 +52,7 @@ SEKD采用了类似于SuperPoint的结构，backbone由1个卷积和9个ResNet\_
 
 ![](<../../.gitbook/assets/image (878).png>)
 
-![](<../../.gitbook/assets/image (523).png>)
+![](<../../.gitbook/assets/image (182).png>)
 
 具有较高响应的点被视为可能的keypoint，经过NMS（半径设为4），每张图像可以获得1000个keypoint。但是由于不同图像条件下，可能没法取到一样的keypoint，所以作者采用了affine adaption方法，即对于原始图像进行random affine transformation和color jitter，获得新的图像后经过网络，获得不同图像条件下的P，最后映射回原图，取平均，得到最后的P.&#x20;
 

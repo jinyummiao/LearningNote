@@ -46,7 +46,7 @@ BoW保留的是视觉单词的数量，而VLAD保留的是每个视觉单词的�
 
 ### Learning from Time Machine data
 
-![](<../../.gitbook/assets/image (815).png>)
+![](<../../.gitbook/assets/image (210).png>)
 
 作者利用谷歌街景来获得训练数据，数据只具有粗糙的GPS信息。对于每个query，作者利用GPS信息获得可能的positive $$p^{q}_{i}$$ (可能地理距离很近，但是不同朝向)，和获得确定的negatives $$n^{q}_{j}$$.
 

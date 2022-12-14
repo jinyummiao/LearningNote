@@ -2,7 +2,7 @@
 
 * [About me](README.md)
 
-## 0⃣ TOOLS
+## TOOLS
 
 * [学术表达](tools/xue-shu-biao-da/README.md)
   * [表述](tools/xue-shu-biao-da/biao-shu.md)
@@ -11,7 +11,7 @@
 * [Git常用指令](tools/git-chang-yong-zhi-ling.md)
 * [Docker常用指令](tools/docker-chang-yong-zhi-ling.md)
 
-## 1⃣ Features
+## Features
 
 * [hand-crafted features](features/hand-crafted-features/README.md)
   * [\[ACC 1998\] Harris角点](features/hand-crafted-features/acc-1998-harris-jiao-dian.md)
@@ -45,7 +45,7 @@
   * [\[ECCV 2020\] AdaLAM](features/feature-matcher/eccv-2020-adalam.md)
   * [\[CVPR 2021\] Patch2Pix](features/feature-matcher/cvpr-2021-patch2pix.md)
 
-## 2⃣ 3D Vision
+## 3D Vision
 
 * [learning note](3d-vision/learning-note/README.md)
   * [Camera model](3d-vision/learning-note/camera-model.md)
@@ -124,6 +124,7 @@
     * [\[BMVC 2020\] LiPo-LCD](3d-vision/localization/place-recognition/bmvc-2020-lipo-lcd.md)
     * [\[TIP 2021\] DASGIL](3d-vision/localization/place-recognition/tip-2021-dasgil.md)
     * [\[RAL 2021\] BVMatch](3d-vision/localization/place-recognition/ral-2021-bvmatch.md)
+    * [\[MED 2022\] BK-tree indexing](3d-vision/localization/place-recognition/med-2022-bk-tree-indexing.md)
   * [scene coordinate regression](3d-vision/localization/scene-coordinate-regression/README.md)
     * [\[CVPR 2020\] HSCNet](3d-vision/localization/scene-coordinate-regression/cvpr-2020-hscnet.md)
     * [\[CVPR 2017\] DSAC](3d-vision/localization/scene-coordinate-regression/cvpr-2017-dsac.md)
@@ -136,10 +137,11 @@
     * [\[CVPR 2021\] PixLoc](3d-vision/localization/matching-with-map/cvpr-2021-pixloc.md)
     * [\[ICCR 2020\] Pole Map](3d-vision/localization/matching-with-map/iccr-2020-pole-map.md)
     * [\[RAL 2018\] X-View](3d-vision/localization/matching-with-map/ral-2018-x-view.md)
+    * [\[RAL 2021\] BVMatch](3d-vision/localization/matching-with-map/ral-2021-bvmatch.md)
 * [Positioning](3d-vision/positioning/README.md)
   * [\[IV 2019\] BEV-IPM](3d-vision/positioning/iv-2019-bev-ipm.md)
 
-## 3⃣ DEEP LEARNING
+## DEEP LEARNING
 
 * [model](deep-learning/model/README.md)
   * [\[neurocomputing 2020\] E2BoWs](deep-learning/model/neurocomputing-2020-e2bows.md)

@@ -16,7 +16,7 @@ D2-net的主要贡献在于提出了detect-and-describe的特征提取方法，�
 
 D2的detector和descriptor是基于相同的feature map获取的。输入图像通过一个前向网络，得到C x H x W feature map，被视为得到了H x W 个C维的稠密局部特征。&#x20;
 
-![](<../../.gitbook/assets/image (160).png>)
+![](<../../.gitbook/assets/image (230).png>)
 
 ### Hard feature detection(test)
 
@@ -66,7 +66,7 @@ D2用MegaDepth数据集进行训练，MegaDepth提供了同一场景不同视角
 
 直观理解，$$N_1$$为图1中位于A的邻域之外，与B最相似的点。$$N_2$$同理。 然后就可以分别计算A与$$N_2$$，B与$$N_1$$的descriptor距离，得到negative descriptor distance=
 
-![](<../../.gitbook/assets/image (347).png>)
+![](<../../.gitbook/assets/image (312).png>)
 
 最后，triplet margin loss如下：&#x20;
 
@@ -74,7 +74,7 @@ D2用MegaDepth数据集进行训练，MegaDepth提供了同一场景不同视角
 
 通过该loss可以让descriptor的distinctiveness提升，而为了挑选更具重复性的特征，D2在triple margin loss前加了一个权重&#x20;
 
-![](<../../.gitbook/assets/image (356).png>)
+![](<../../.gitbook/assets/image (15).png>)
 
 这样的话，为了让loss降低，网络需要学习去提取区分度更高（m更小）并且可重复性更好（权重更大）的点，并且优化提取的descriptor。
 
@@ -88,16 +88,16 @@ D2采用了VGG-16网络模型（\~conv4\_3），加载ImageNet预训练模型即
 
 在HPatches上，D2表现较差，threshold小于6px时的MMA很低。D2提取的特征较多，匹配数量也较多。在camera localization和3D reconstruction实验中效果较好。
 
-![](../../.gitbook/assets/d2\_2.png)
+![](../../.gitbook/assets/1638270072937.png)
 
 ![](<../../.gitbook/assets/image (6).png>)
 
-![](../../.gitbook/assets/d2\_4.png)
+![](../../.gitbook/assets/1638270107897.png)
 
 Direct Pose Estimation (PE)是在query和最相似图像之间匹配特征，然后估计位姿；Sparse PE是在query和top-100个相似图像间匹配特征，然后用一个spatial verification步骤来剔除错误匹配，然后用与query具有最多匹配的database image来估计query的位姿。Dense PE是用稠密的CNN描述子来进行匹配（对VGG16网络的conv5层到conv3层进行有指导的匹配）。Dense Pose Verification(PV)是InLoc中提出的一种位姿验证方法，通过估计出的位姿渲染出一幅图像，用稠密提取的SIFT描述子与query进行匹配，计算一个相似度，用此相似度在Dense PE后rerank top-10个图像。具体算法可参考InLoc原文。
 
 ### 网络结构
 
-![](../../.gitbook/assets/d2\_6.png)
+![](../../.gitbook/assets/1638271129995.png)
 
-![](../../.gitbook/assets/d2\_5.png)
+![](../../.gitbook/assets/1638271102824.png)

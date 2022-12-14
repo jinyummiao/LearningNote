@@ -16,7 +16,7 @@ description: 'LoFTR: Detector-Free Local Feature Matching with Transformers'
 
 ### Methods
 
-![](<../../.gitbook/assets/image (999).png>)
+![](<../../.gitbook/assets/image (150).png>)
 
 #### Local Feature Extraction
 

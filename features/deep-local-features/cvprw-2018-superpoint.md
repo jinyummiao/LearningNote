@@ -62,7 +62,7 @@ p是cell的中心位置，H是真值homography，所以上式就是判断两个c
 
 ![](<../../.gitbook/assets/image (520).png>)
 
-![](../../.gitbook/assets/superpoint\_0.png)
+![](../../.gitbook/assets/1638243423573.png)
 
 可通过iterative homographic adaptation来提升效果。100次random homography效果较好。
 
@@ -86,10 +86,10 @@ p是cell的中心位置，H是真值homography，所以上式就是判断两个c
 
 **Homography Estimation** 因为无法直接比较真值H和预测H之间的差异，所以作者转而比较H将图1的四个角点变换到图2中的效果，先在图1中定义四个角点$$c_1,c_2,c_3,c_4$$，然后用真值H将四个点变换到图2中，得到$$c'_1,c'_2,c'_3,c'_4$$，并用预测的H将四个点变换到图2中，得到$$\hat{c}'_1,\hat{c}'_2,\hat{c}'_3,\hat{c}'_4$$，用阈值$$\varepsilon$$来定义一个正确的H：
 
-![](../../.gitbook/assets/superpoint\_2.png)
+![](../../.gitbook/assets/1638268886905.png)
 
 在实验中，设置$$\varepsilon=3$$，在480x640大小的图像中提取最多1000个特征。为了估计H，先对两幅图像中的特征进行最近邻匹配，然后用OpenCV中的findHomography()+RANSAC来估计H矩阵。
 
 ![](<../../.gitbook/assets/image (198).png>)
 
-![](../../.gitbook/assets/superpoint\_4.png)
+![](../../.gitbook/assets/1638269256785.png)

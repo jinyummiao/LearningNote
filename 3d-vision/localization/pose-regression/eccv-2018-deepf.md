@@ -94,7 +94,7 @@ In the following we adopt the general structure of algorithm (4), but do not ass
 
 ## Fundamental Matrix Estimation
 
-![八点法求解F](<../../../.gitbook/assets/image (408).png>)
+![八点法求解F](<../../../.gitbook/assets/image (394).png>)
 
 本文基于8点法求解F矩阵，将所有坐标缩放到$${[-1,1]}^2$$​，定义预处理函数：
 

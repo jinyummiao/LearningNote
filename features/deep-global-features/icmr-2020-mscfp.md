@@ -58,6 +58,6 @@ description: Image Retrieval using Multi-scale CNN Features Pooling
 
 ![](<../../.gitbook/assets/image (25).png>)
 
-![](<../../.gitbook/assets/image (845).png>)
+![](<../../.gitbook/assets/image (874).png>)
 
 ![](<../../.gitbook/assets/image (529).png>)

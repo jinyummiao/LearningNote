@@ -22,7 +22,7 @@
 
 作者将图像$$x\in \mathbb{R}^{H \times W \times C}$$reshape为一组flattened 2D图像块$$x_p\in \mathbb{R}^{N \times (P^2 \cdot C)}$$，其中H和W是图像分辨率，C为通道数，(P,P)是图像块的分辨率，$$N=HW/P^2$$为图像块的数量。Transformer需要定长的输出向量，所以作者将图像块展平，并通过一个可训练的线性映射将图像块向量映射为D维的向量，称为patch embeddings.&#x20;
 
-![](<../../../.gitbook/assets/image (176).png>)
+![](<../../../.gitbook/assets/image (810).png>)
 
 同时，作者在embedding中加入了一个class token ($$z^0_0 = x_{class}$$)，从Transformer encoder输出时的状态$$z^0_L$$作为图像表征y。在预训练和fine-tuning阶段，在$$z^0_L$$上连接一个classification head。该分类head在预训练阶段通过一个有一个隐层的MLP实现，在fine-tuning阶段通过一个单全连接层实现。 作者在patch embeddings中加入了1D的position embeddings。&#x20;
 
@@ -36,12 +36,12 @@ tranformer encoder包含交替出现的multi-head self-attention层(MSA)和MLP�
 
 ### Experiments
 
-![](<../../../.gitbook/assets/image (861).png>)
+![](<../../../.gitbook/assets/image (139).png>)
 
 模型的几种变型。&#x20;
 
 ![](<../../../.gitbook/assets/image (881).png>)
 
-![](<../../../.gitbook/assets/image (45).png>)
+![](<../../../.gitbook/assets/image (207).png>)
 
 ![](<../../../.gitbook/assets/image (833).png>)

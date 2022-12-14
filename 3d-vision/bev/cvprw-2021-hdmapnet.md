@@ -60,7 +60,7 @@ image encoder包含perspective view image encoder和neural view transformer两�
 
 **Instance embedding.** 该模块用于将每个BEV embedding进行聚类。记C为真值聚类数，$$N_c$$​是聚类c中element的数量，$$\mu_c$$是聚类c的embedding均值，$${[x]}_+=max(0,x)$$，$$\delta$$是损失函数中的margin，则聚类损失为：
 
-<figure><img src="../../.gitbook/assets/image (614).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (602).png" alt=""><figcaption></figcaption></figure>
 
 **Direction prediction.** 这一模块用于预测每个pixel C中车道线的方向。方向被离散化为$$N_d$$​个均匀分布的类别。通过对当前像素$$C_{now}$$​的方向D进行分类，下一个车道线像素$$C_{next}$$​可以获得：$$C_{next}=C_{now}+\triangle_{step}\cdot D$$，其中$$\triangle_{step}$$是预设的步长。由于我们不知道车道线的方向，我们无法辨别每个node的前向和后向方向，因此作者将它们都视为positive。具体的来说，就是每个车道线node的标签是一个$$N_d$$​维向量，其中两个值是1，其他是0. Note that most of the pixels on the topdown map don’t lie on the lanes, which means they don’t have directions. The direction vector of those pixels is a zero vector and we never do backpropagation for those pixels during training. 作者用softmax作为分类的激活函数。
 

@@ -74,7 +74,7 @@ Although we use a discrete set of samples to estimate the integral, stratified s
 
 重新定义连续的场景表征为$$F_\Theta=F_\Theta' \circ \gamma$$​，其中$$F_\Theta'$$是上文所述可学习的MLP，$$\gamma$$无需训练：
 
-![](<../../.gitbook/assets/image (577).png>)
+![](<../../.gitbook/assets/image (609).png>)
 
 对坐标**x**的三个量（归一化到\[-1,1]间）和笛卡尔方向单位向量d的三个量（构建到\[-1,1]间）分别用$$\gamma(\cdot)$$进行处理。在实验中，$$\gamma(\textbf{x})$$中的L=10，$$\gamma(d)$$中L=4。
 

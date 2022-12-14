@@ -76,7 +76,7 @@ sptial scoring基于两幅图像中mutual nearest neighboring的patch特征计�
 
 该相似分数计量方法可以很容易拓展到多尺度上，带来更好的表现。对于$$n_s$$个不同的patch尺寸，作者将不同patch尺寸下的spatial matching scores取凸包集合，得到最终的匹配分数：&#x20;
 
-![](<../../.gitbook/assets/image (42).png>)
+![](<../../.gitbook/assets/image (847).png>)
 
 其中$$s_{i, spatial}$$是第i个patch尺寸的spatial score。而$$\sum_{i}w_i=1, w_i \le 0$$, for all i.
 
@@ -106,7 +106,7 @@ sptial scoring基于两幅图像中mutual nearest neighboring的patch特征计�
 
 ![](<../../.gitbook/assets/image (153).png>)
 
-![](<../../.gitbook/assets/image (327).png>)
+![](<../../.gitbook/assets/image (1046).png>)
 
 消融实验（单一尺度v.s.多尺度，RANSAC v.s. spatial scoring）&#x20;
 

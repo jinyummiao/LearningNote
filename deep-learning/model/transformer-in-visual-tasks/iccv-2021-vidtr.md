@@ -14,7 +14,7 @@ description: 'VidTr: Video Transformer without Convolutions'
 
 基于卷积的视频动作分类算法有两个缺点：1）它们每一层的感受野都是有限的；2）通过堆叠的卷积层聚合信息很低效，有时甚至是无效的。这篇论文中，作者提出一种基于transformer的视频网络，直接在视频像素上使用注意力机制，进行视频分类。&#x20;
 
-![](<../../../.gitbook/assets/image (1011).png>)
+![](<../../../.gitbook/assets/image (333).png>)
 
 首先，作者引入一种原始的video transformer，通过video transformer直接从视频像素中学习时空特征，证明该模型可以实现像素级别的时空建模。但是，transformer关于序列长度的复杂度为$$\mathbb{O}(n^2)$$，需要大量计算内存。作者进一步引入可分离注意力机制，分别使用空间上和时间上的注意力机制。这一步可以将内存消耗减少3.3倍，而且不损失精度。进一步地，作者发现很多视频的大部分信息是冗余的，因为它们包含了很多邻近的重复帧，因此，作者提出一种基于topK pooling处理的standard deviation，减短了序列长度，让transformer网络专注更具代表性的帧。
 

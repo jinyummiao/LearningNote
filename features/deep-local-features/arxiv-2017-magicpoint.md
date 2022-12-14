@@ -34,7 +34,7 @@ description: Toward Geometric Deep SLAM
 
 结构类似于VGG。输入一个图像，得到一个同等分辨率的point response image，输出的每个pixel的值代表原图中这个位置是角点的概率。但是直接用encoder下采样-decoder上采样的结构恢复分辨率很耗算力，所以作者用网络得到了1/8大小的feature map，维度是65维（65个通道），这65个通道对应原图中不重叠的8x8的区域和一个dustbin通道（用于表示该8x8区域内无关键点），最后reshape到原本分辨率，这样decoder就没有参数了。&#x20;
 
-![](../../.gitbook/assets/magicpoint\_3.png)
+![](../../.gitbook/assets/1638240351950.png)
 
 训练时使用OpenCV作了一批虚拟的几何体，几何体的角点可以直接得到，然后加入噪声、光照变化等进行数据增强。训练时对feature map上15x20个grid中的每个cell进行softmax处理，然后在每个cell中计算cross-entropy loss。
 
@@ -54,7 +54,7 @@ MagicWarp输入一对图像的关键点，然后估计homography。比如两幅1
 
 **Corner Detection Average Precision** 对于角点检测，约定如果检测到点的位置与最近的真值角点之间的距离小于阈值$$\varepsilon=4$$，则该点检测正确，即定义correctness为：&#x20;
 
-![](../../.gitbook/assets/magicpoint\_0.png)
+![](../../.gitbook/assets/1638239664275.png)
 
 通过改变检测可信度来得到准确率-召回率曲线，并用对应的Area Under Curve（也称Average Precision）来综合评估。&#x20;
 
@@ -66,17 +66,17 @@ localization error在$$(0,\varepsilon)$$之间，越小越好。
 
 **Repeatability** 作者还定义了repeatability，即一个点在下一帧中被检测到的概率。作者只计算了sequential repeatability（在第t帧和第t+1帧之间）。这里作者定义correctness的阈值为$$\varepsilon=2$$，假设图1中有$$N_1$$个点，图2中有$$N_2$$个点，定义repeatability实验中的correctness为：
 
-![](<../../.gitbook/assets/image (886).png>)
+![](<../../.gitbook/assets/image (186).png>)
 
 而repeatability定义为一个点在另一张图像中出现的概率：&#x20;
 
-![](../../.gitbook/assets/magicpoint\_2.png)
+![](../../.gitbook/assets/1638239962783.png)
 
 对于每个图像序列，作者先计算了repeatability与检测点数量的相关曲线，然后找到最大repeatability的点，并以repeatability@N的形式作为评估结果，其中N为最大repeatability时的平均监测点数量。
 
 #### 在Synthetic Shapes数据集上的评估
 
-![](../../.gitbook/assets/magicpoint\_4.png)
+![](../../.gitbook/assets/1638240398333.png)
 
 ![](<../../.gitbook/assets/image (342).png>)
 
@@ -112,7 +112,7 @@ localization error在$$(0,\varepsilon)$$之间，越小越好。
 
 ![](<../../.gitbook/assets/image (1057).png>)
 
-![](../../.gitbook/assets/magicpoint\_15.png)
+![](../../.gitbook/assets/1638242383416.png)
 
 magicwarp可以应对更大的图像变换。
 

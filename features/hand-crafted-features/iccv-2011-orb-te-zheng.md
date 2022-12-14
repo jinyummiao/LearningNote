@@ -8,7 +8,7 @@ ORB=Oriented FAST+Rotated BRIEF
 
 #### 确定候选角点
 
-![](../../.gitbook/assets/orb\_0.png)
+![](../../.gitbook/assets/1641805145755.png)
 
 1.确定某个像素p，其像素值为$$I_p$$，以p为圆心，半径为3，确定一个圆，圆上有16个像素，分别为$$p_1,p_2,...,p_{16}$$;&#x20;
 
@@ -34,15 +34,15 @@ ORB=Oriented FAST+Rotated BRIEF
 
 1.在一个小图像块中，定义图像块的矩：&#x20;
 
-![](../../.gitbook/assets/orb\_1.png)
+![](../../.gitbook/assets/1641806191388.png)
 
 2.通过矩可以找到图像块的质心：&#x20;
 
-![](../../.gitbook/assets/orb\_2.png)
+![](../../.gitbook/assets/1641806315213.png)
 
 3.连接图像块的几何中心和质心，得到一个方向向量$$\overrightarrow{OC}$$，这就是特征点的方向：&#x20;
 
-![](../../.gitbook/assets/orb\_3.png)
+![](../../.gitbook/assets/1641806415086.png)
 
 ### Rotated BRIEF
 
@@ -52,11 +52,11 @@ ORB=Oriented FAST+Rotated BRIEF
 
 2.以特征点为中心，取S x S的邻域窗口，在窗口内随机选取一对点（x,y），比较两者像素大小，进行二进制赋值：&#x20;
 
-![](../../.gitbook/assets/orb\_4.png)
+![](../../.gitbook/assets/1641806617807.png)
 
 3.在窗口中随机选取N对随机点（一般N为256），重复步骤2的二进制赋值，形成一个二进制编码，这个编码就是对特征点的描述：&#x20;
 
-![](../../.gitbook/assets/orb\_5.png)
+![](../../.gitbook/assets/1641806720657.png)
 
 随机特征点对的选取，有5种方法，其中第二种比较好：&#x20;
 
@@ -76,15 +76,15 @@ ORB=Oriented FAST+Rotated BRIEF
 
 1.对于任意特征点，在31x31邻域内位置为$$(x_i,y_i)$$的n对点集，用2 x n的矩阵来表示：&#x20;
 
-![](../../.gitbook/assets/orb\_7.png)
+![](../../.gitbook/assets/1641807556632.png)
 
 2.利用FAST算法求出的特征点的主方向$$\theta$$和旋转矩阵$$R_\theta$$，求出旋转的$$S_\theta$$:&#x20;
 
-![](../../.gitbook/assets/orb\_8.png)
+![](../../.gitbook/assets/1641807635895.png)
 
 3.计算描述子：&#x20;
 
-![](../../.gitbook/assets/orb\_9.png)
+![](../../.gitbook/assets/1641807681078.png)
 
 steered BRIEF具有旋转不变性，但是可区分性不如原本的BRIEF描述子。
 

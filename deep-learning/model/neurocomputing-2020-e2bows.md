@@ -28,7 +28,7 @@ E2BoWs模型是通过修改带有batch-normalization(BN)层的GoogLeNet得到的
 
 SFMs是通过将全连接层的参数转化到卷积层中实现的。如图2所示，全连接层中的参数维度为$$1024 \times n$$，其中1024是pooling后的特征维度，而n是训练类别数。这些参数可以被转换到n个$$1024 \times 1 \times 1$$大小的卷积核。换言之，作者将$$1024 \times 1$$的全连接层的参数转换到了一个$$1024 \times 1 \times 1$$的卷积核中。因此，可以得到n通道的卷积核，从Inception5层可以生成n个SFMs。 在FC层中，每一维输出都是对应一个类别的分类分数。与FC层输出相比，SFMs也包含这样的分类线索。例如，平均池化每个SFM上的响应值将获得对应类别的分类分数。此外,SFMs保留了某些视觉线索，因为它们是从Inception5层产生的，没有经过pooling处理，没有丢失空间信息。&#x20;
 
-![](<../../.gitbook/assets/image (1068).png>)
+![](<../../.gitbook/assets/image (321).png>)
 
 可以看到，产生的SFMs具有较好的语义信息和空间信息。
 
@@ -72,6 +72,6 @@ SFMs是通过将全连接层的参数转化到卷积层中实现的。如图2所
 
 ![](<../../.gitbook/assets/image (46).png>)
 
-![](<../../.gitbook/assets/image (211).png>)
+![](<../../.gitbook/assets/image (1073) (1).png>)
 
 ![](<../../.gitbook/assets/image (197).png>)

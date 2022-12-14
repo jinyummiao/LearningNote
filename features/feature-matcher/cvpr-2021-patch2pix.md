@@ -16,7 +16,7 @@ description: 'Patch2Pix: Epipolar-Guided Pixel-Level Correspondences'
 
 获得图像对之间correspondence的传统方法主要包含三步：1.检测并描述局部特征；2.用描述子进行最近邻匹配；3. 剔除外点。&#x20;
 
-![](../../.gitbook/assets/patch2pix\_0.png)
+![](../../.gitbook/assets/1639017220982.png)
 
 在本文中，作者提出Patch2Pix，一种新的匹配网络的范式。该网络首先获得patch-level match proposal，然后将它们refine到pixel-level matches。所提出refinement网络是基于用相对位姿计算得到的极线约束来弱监督的，来学习在patch proposa中回归具有几何一致性的pixel-wise matches。 本文的贡献点在于：
 
@@ -29,7 +29,7 @@ description: 'Patch2Pix: Epipolar-Guided Pixel-Level Correspondences'
 
 匹配网络的优势在于可以直接优化匹配目标，不需要显式地检测关键点。网络隐式地包含了特征检测和描述，并在匹配中反映出来。但是目前匹配网络中还存在两个问题，导致匹配的不准确：1. 由于内存的限制，需要使用下采样后的特征图；2. 使用弱监督方法训练的NCNet和SparseNCNet简单地给非匹配对低分数、给匹配对高分数，这无法让网络识别出好和坏的匹配，让方法无法获得pixel-accurate correspondence。 为了解决这两个问题，作者提出一种detect-to-refine两阶段匹配过程。在第一阶段检测过程中，用匹配网络，如NCNet，获得一组patch-level match proposal。第二阶段中，网络用两种途径refine match proposals：1. 用分类去判断一个proposal是好是坏；2. 用回归去在proposed match的中心周围局部区域内检测出一个pixel精度的匹配。作者基于这样的直觉，即correspondence网络用高层次的语义特征来区域patch-level的语义匹配，然后refinement网络用局部结构的细节信息来获得匹配的更准确位置。最后，网络用弱监督的极线损失来训练，让获得的匹配满足相对位姿定义的几何约束。&#x20;
 
-![](../../.gitbook/assets/patch2pix\_1.png)
+![](../../.gitbook/assets/1639020628839.png)
 
 #### Refinement: Pixel-level Matching
 
@@ -37,7 +37,7 @@ description: 'Patch2Pix: Epipolar-Guided Pixel-Level Correspondences'
 
 **From match proposals to patches** 给定一个match proposal $$m_i=(p^A_i,p^B_i)=(x^A_i,y^A_i,x^B_i,y^B_i)$$，refinement阶段的目标就是通过在局部区域内寻找pixel-wise match来获得准确的匹配。因为match proposal是在下采样后的特征图上获得的，1像素的误差将会导致在原图上$$2^{L_1}$$像素的误差。因此，算法定义搜索区域为以$$(p^A_i,p^B_i)$$为中心的大小为$$S \times S$$的局部patch，其中$$S > 2^{L_1}$$。当根据match proposal获得局部patch对后，通过网络拟合pixel-level matches。&#x20;
 
-![](../../.gitbook/assets/patch2pix\_2.png)
+![](../../.gitbook/assets/1639021920887.png)
 
 **Local Patch Expansion** 首先将$$p^A_i$$沿x轴和y轴分别移动d个像素，得到四个角点。这让我们获得了相对$$p^B_i$$的四个角点，组成了四个新的match proposals。相似的，拓展$$p^B_i$$获得与$$p^A_i$$相匹配的四个角点，获得四个新的match proposals。最后，拓展后的8个proposals组成8对$$S\times S$$局部区域。令d=S/2则拓展后的搜索区域大小为$$2S\times 2S$$，并包含了原本的$$S \times S$$搜索区域。对patch proposals的patch expansion在训练时非常有效，因为网络可以在空间上相近和特征上相似的proposals中搜索正确的proposals，可以加快收敛速度并提升效果。&#x20;
 
@@ -65,12 +65,12 @@ description: 'Patch2Pix: Epipolar-Guided Pixel-Level Correspondences'
 
 match proposal由NCNet提供，在MegaDepth上训练refinement网络，$$\widehat{\theta_{cls}}=\widehat{\theta_{geo}}=50, \widetilde{\theta_{cls}}=\widetilde{\theta_{geo}}=5, S=16$$
 
-![](../../.gitbook/assets/patch2pix\_4.png)
+![](../../.gitbook/assets/1639036091441.png)
 
-![](../../.gitbook/assets/patch2pix\_6.png)
+![](../../.gitbook/assets/1639036186154.png)
 
-![](../../.gitbook/assets/patch2pix\_7.png)
+![](../../.gitbook/assets/1639036467518.png)
 
-![](../../.gitbook/assets/patch2pix\_8.png)
+![](../../.gitbook/assets/1639036502796.png)
 
 ### Evaluation

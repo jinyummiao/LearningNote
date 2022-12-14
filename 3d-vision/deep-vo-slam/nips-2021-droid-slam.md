@@ -64,7 +64,7 @@ lookup算子以一个$$H \times W$$的坐标​网格为输入，根据双线性
 
 **Correspondence** 在每次更新的开始，用当前位姿和深度的估计量来预测correspondence。给定第i帧的像素坐标网格，$$p_i \in R^{H \times W \times 2}$$，对frame graph中的每条边$$(i,j) \in \mathcal{E}$$计算稠密的correspondence field $$p_{ij}$$:
 
-![](<../../.gitbook/assets/image (470).png>)
+![](<../../.gitbook/assets/image (391) (2).png>)
 
 其中$$\Pi_c$$​为相机模型，将3D点投影到图像上，而$$\Pi^{-1}_c$$​是拟投影函数，将像素坐标$$p_i$$​和拟深度d投影到3D点云上。$$p_{ij}$$​表示像素坐标$$p_i$$投影到第j帧上的坐标。
 
@@ -140,7 +140,7 @@ Our network is trained entirely on monocular video from the synthetic TartanAir 
 
 ![](<../../.gitbook/assets/image (419).png>)
 
-![](<../../.gitbook/assets/image (380).png>)
+![](<../../.gitbook/assets/image (417).png>)
 
 ![\\](<../../.gitbook/assets/image (387).png>)
 
@@ -148,7 +148,7 @@ Our network is trained entirely on monocular video from the synthetic TartanAir 
 
 ![](<../../.gitbook/assets/image (437).png>)
 
-![](<../../.gitbook/assets/image (477).png>)
+![](<../../.gitbook/assets/image (415).png>)
 
 **Timing and Memory** Our system can run in real-time with 2 3090 GPUs. Tracking and local BA is run on the first GPU, while global BA and loop closure is run on the second. On EuRoC, we average 20fps (camera hz) by downsampling to 320 x 512 resolution and skipping every other frame. Results in Tab. 4 were obtained in this setting. On TUM-RGBD, we average 30fps by downsampling to 240 x 320 and skipping every other frame, again the reported results where obtained in this setting. On TartanAir, due to much faster camera motion, we are unable to run in real-time, averaging 8fps. However, this is still a 16x speedup over the top 2 submissions to the TartanAir SLAM challenge, which rely on COLMAP.
 

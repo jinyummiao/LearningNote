@@ -15,3 +15,4 @@ description: map-based visual re-localization
 | CMRNet   | ITSC 2021  | 利用光流网络PWCNet，输入为RGB图像（query）和Lidar地图投影到某一初始位姿下的深度图，网络直接预测query图像与深度图之间的相对位姿，根据相对位姿和初始位姿得到query图像的绝对位姿。可迭代优化。                                                                       |
 | CMRNet++ | ICRAW 2020 | 利用光流网络PWCNet，输入为RGB图像（query）和Lidar地图投影到某一初始位姿下的深度图，网络直接预测点云和RGB图像的匹配，再利用PnP+RANSAC求解位姿。可迭代优化。                                                                                      |
 | HyperMap |  ICRA 2021 | 在CMRNet的基础上，先对Lidar地图进行栅格化，对栅格化的地图进行3D特征提取，用Kmeans将栅格特征转换为id值。在地图投影得到深度图的过程中，只对id map进行投影，减少计算量，然后将id值转换成特征(late projection)。输入CMRNet的是query图像和地图投影的特征图，其他流程与CMRNet类似，采用了新的遮挡处理方法。 |
+| BVMatch  | RAL 2021   | 在BEV视角下，对稀疏3D点云进行栅格化，基于栅格内点云的数量（density）构建BV image。基于Log-Gabor filter构建MIM，以此设计具有旋转不变性的局部特征描述子BVFT，用FAST检测关键点。用K-means构建词典，实现场景识别。同时可以对两个BV image进行相对位姿计算（三个自由度），实现定位。             |

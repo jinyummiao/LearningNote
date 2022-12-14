@@ -26,7 +26,7 @@ In offline map merging, AutoMerge can detect all of the potential matches betwee
 
 ## Fusion-enhanced Descriptor Extraction
 
-<figure><img src="../../.gitbook/assets/image (979).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (898) (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Multi-perspectives Feature Extraction
 
@@ -150,9 +150,9 @@ In all of the above datasets, we count the retrieval as successful if the detect
 
 <figure><img src="../../.gitbook/assets/image (941).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (920).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (928).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (955).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (920).png" alt=""><figcaption></figcaption></figure>
 
 ### Map Merging
 

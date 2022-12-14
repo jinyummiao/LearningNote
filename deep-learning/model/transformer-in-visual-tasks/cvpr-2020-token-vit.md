@@ -34,11 +34,11 @@ VT利用卷积层去学习密集分布的低层图像特征，输入transformer�
 
 对于特征图X，用point-wise卷积将每个像素$$X_p\in \mathbb{R}^C$$映射到L个语义组中的一个。在每组中，得到tokens T：&#x20;
 
-![](<../../../.gitbook/assets/image (543).png>)
+![](<../../../.gitbook/assets/image (310).png>)
 
 其中$$W_A\in \mathbb{R}^{C\times L}$$从X中构成了语义组，$${SOFTMAX}_{HW}(\cdot)$$将响应值转换为空间注意力。最后A乘X得到了X的加权平均值，获得了L个visual tokens。 但是，很多高层的视觉信息是稀疏的，只存在于少数图像中。所以，固定的已训练好的权重$$W_a$$会浪费计算资源，应为他们将所有的视觉信息都建模了。作者称此为"filter-based" tokenizer，因此该模型用了卷积核来提取visual tokens。
 
-![](<../../../.gitbook/assets/image (694).png>)
+![](<../../../.gitbook/assets/image (509).png>)
 
 **Recurrent Tokenizer**
 
@@ -54,7 +54,7 @@ VT利用卷积层去学习密集分布的低层图像特征，输入transformer�
 
 作者用了标准的transformer结构：&#x20;
 
-![](<../../../.gitbook/assets/image (812).png>)
+![](<../../../.gitbook/assets/image (1018).png>)
 
 其中$$T_{in}，{T'}_{out}，T_{out}\in \mathbb{R}^{L\times C}$$为visual tokens。与图卷积不同，在transformer中，tokens之间的weight是根据输入而定的，并且通过一种key-query之间的点乘来计算：&#x20;
 
@@ -86,11 +86,11 @@ VT利用卷积层去学习密集分布的低层图像特征，输入transformer�
 
 比baseline效果好，且FLOP低。&#x20;
 
-![](<../../../.gitbook/assets/image (531).png>)
+![](<../../../.gitbook/assets/image (1039) (1).png>)
 
 不同tokenizer方法的对比，用聚类和卷积的方法可以更好的将特征按照语义信息聚合在一起。&#x20;
 
-![](<../../../.gitbook/assets/image (202).png>)
+![](<../../../.gitbook/assets/image (1035) (1).png>)
 
 加入recurrent tokenizer效果更好。&#x20;
 
@@ -98,11 +98,11 @@ VT利用卷积层去学习密集分布的低层图像特征，输入transformer�
 
 用不同方法去获取token之间的相互关系，transformer效果最好。&#x20;
 
-![](<../../../.gitbook/assets/image (367).png>)
+![](<../../../.gitbook/assets/image (538).png>)
 
 较少的token足以表示图像。&#x20;
 
-![](<../../../.gitbook/assets/image (522).png>)
+![](<../../../.gitbook/assets/image (1076) (1).png>)
 
 projection过程是有必要的，原特征图中包含着一些细节信息。&#x20;
 
@@ -110,6 +110,6 @@ projection过程是有必要的，原特征图中包含着一些细节信息。&
 
 与其他基于attention的增强版ResNet相比较，VT效果更好，FLOP更低。&#x20;
 
-![](<../../../.gitbook/assets/image (354).png>)
+![](<../../../.gitbook/assets/image (29).png>)
 
 在语义分割上，比baseline更好。

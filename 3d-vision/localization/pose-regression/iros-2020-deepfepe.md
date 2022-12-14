@@ -32,7 +32,7 @@ In this paper, we design an end-to-end trainable framework consisting of learnab
 
 本文提出一种基于深度学习得到位姿估计pipeline，称为Deep learning-based Feature Extraction and Pose Estimation (DeepFEPE)，该pipeline输入两帧图像，估计相对位姿。如图1所示，该pipeline主要包含两个基于学习的模型，分别用于提取特征和位姿估计。&#x20;
 
-![](<../../../.gitbook/assets/image (420).png>)
+![](<../../../.gitbook/assets/image (467).png>)
 
 softargmax使得关键点检测达到亚像素精度，并且使得梯度能够回传到点坐标。在损失函数设计中，作者不仅拟合F矩阵，而且对分解后的位姿进行了约束。
 
@@ -98,7 +98,7 @@ When connecting the entire pipeline, the gradients from pose-loss flow back thro
 
 其中Rog()将旋转矩阵转换为Rodrigues旋转向量，向量的长度指示了角度误差。由于尺度不明确，将平移向量固定为单位向量：
 
-![](<../../../.gitbook/assets/image (471).png>)
+![](<../../../.gitbook/assets/image (454).png>)
 
 得到了平均向量间的角度误差。With the rotation and translation error for each pair of images throughout the sequence, we compute the inlier ratio, from 0% to 100%, under different thresholds. Mean and median of the error are also computed in degrees.
 

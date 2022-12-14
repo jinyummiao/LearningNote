@@ -24,7 +24,7 @@ description: 'AdaLAM: Revisiting Handcrafted Outlier Detection'
 
 给定图$$I_1$$和$$I_2$$中关键点$$K_1$$和$$K_2$$，M是从$$K_1$$到$$K_2$$的最近邻匹配。在实际中，由于描述子的限制，M中有大量不正确的匹配，因此，本文的目标即是找到一个子集$$M'\subset M$$，这个子集是全部正确内点的几何$$M^*\subset M$$的近似。&#x20;
 
-![](<../../.gitbook/assets/image (1).png>)
+![](<../../.gitbook/assets/image (556).png>)
 
 该算法的主要流程为：
 
@@ -89,7 +89,7 @@ description: 'AdaLAM: Revisiting Handcrafted Outlier Detection'
 
 ![](<../../.gitbook/assets/image (142).png>)
 
-![](<../../.gitbook/assets/image (679).png>)
+![](<../../.gitbook/assets/image (687).png>)
 
 ![](<../../.gitbook/assets/image (22).png>)
 

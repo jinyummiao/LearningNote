@@ -30,7 +30,7 @@ In this work, our key contribution is to unify global and local features into a 
 
 ### Model
 
-![](<../../.gitbook/assets/image (264).png>)
+![](<../../.gitbook/assets/image (288).png>)
 
 模型结构如图1。全局特征来自较深层特征，具备高层次视觉信息；局部特征来自中间层特征，对局部区域的信息进行编码。
 

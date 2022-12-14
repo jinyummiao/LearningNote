@@ -28,7 +28,7 @@ RP-VIO是基于VINS-Mono开发的，VINS-Mono基于IMU预积分和视觉特征�
 
 #### Definitions
 
-![](../../.gitbook/assets/rpvio\_1.png)
+![](../../.gitbook/assets/1641893895860.png)
 
 W表示world frame，z轴沿重力方向向下。B表示body frame，定义在IMU上。C表示camera frame。$$R_{ji},t_{ji},T_{ji}$$分别为从frame $$t_i$$到$$t_j$$的旋转、平移和单应性矩阵。这个frame可以是camera frame或body frame。$$R_{i},t_{i}$$表示在$$t_i$$时frame相对于world frame的旋转和平移。$$u^l$$表示第l个特征的归一化图像坐标，响应的3D点$$p_l$$用相对于观察的第一帧的拟深度$$\lambda_l$$来表示。一个平面$$\pi_p$$用相对于$$C_0$$的法向量和距离(n,d)来表示。平面单应性矩阵$$H_j$$（图2）将$$C_0$$中平面点的2D图像坐标投影到$$C_j$$上。&#x20;
 
@@ -46,11 +46,11 @@ $$\mathcal{X}$$表示滑窗$$\mathcal{K}$$内所有帧的状态，即我们想�
 
 算法首先解决相机姿态、3D点和平面参数。从初始的图像帧的滑窗中，选择两个足够视差的base frame。在所有的匹配特征中，我们只选择那些来自场景中最大的平面特征，如具有最多特征的平面。利用这些特征，算法用RANSAC拟合了两个base frame中最大平面之间的平面单应性矩阵H。单应性矩阵经过正则化，然后用OpenCV分解为旋转、平移和平面法向量。这个方法可以得到四个解，首先通过约束正深度来剔除两个解，即所有的平面特征必须位于相机前面。这作为一个约束，$$n_i^Tu_\mu>0$$，其中$$u_\mu$$是归一化图像坐标系中的平均2D特征点。对于剩下的两个解，选择那个与对应IMU预积分旋转$$\triangle\tilde{R_{ij}}$$更接近的解(转换到B frame上)：
 
-![](../../.gitbook/assets/rpvio\_0.png)
+![](../../.gitbook/assets/1641893749282.png)
 
 虽然在IMU预积分旋转中陀螺仪的偏差没有被估计出来，它的幅度很小，不会对这个解产生影响。分解得到的位姿被用于三角化两个base frame间的特征，获得一个初始点云。滑窗内其他frame的位姿是由PnP根据这些初始点云估计得到的。由于两个base frame之间估计的位姿是以平面距离d为尺度的，因此三角化的点云和推理出的位姿也是这个尺度的。所有的位姿估计被输入一个视觉bundle adjustment solver，除了标准的3D-2D重投影误差，作者还引入了由平面单应性引出的2D-2D重投影误差：&#x20;
 
-![](../../.gitbook/assets/rpvio\_2.png)
+![](../../.gitbook/assets/1641894553640.png)
 
 这一残差度量了将frame $$C_j$$中点$$p_l$$的对应像素点$$u^l$$用平面单应性矩阵从第一帧投影得到的预期观测，与真值观测$$u^l_j$$之间的差异。BA的输出是带有尺度(d)的相机位姿、3D特征点和平面法向量。这个未知尺度(d)，以及初始化主要优化所需的其余未知量，如重力矢量、速度和IMU偏差，都是使用相同的分治法进行估计的。&#x20;
 
@@ -58,23 +58,23 @@ $$\mathcal{X}$$表示滑窗$$\mathcal{K}$$内所有帧的状态，即我们想�
 
 #### Sliding-window Optimization
 
-![](../../.gitbook/assets/rpvio\_3.png)
+![](../../.gitbook/assets/1641957419452.png)
 
 记滑窗$$\mathcal{K}$$内相邻帧i和j的所有IMU测量为$$\mathcal{I}_{ij}$$，帧i中所有平面特征记为$$\mathcal{C}_i$$，所有观测到的平面记为$$\mathcal{P}$$。滑窗内的这些状态和测量的因子图如图3所示。滑窗内所有状态的MAP估计$$\mathcal{X}^*$$可以用最小化平方残差和来得到：
 
 &#x20;
 
-![](../../.gitbook/assets/rpvio\_4.png)
+![](../../.gitbook/assets/1641957558171.png)
 
 其中$$r_p$$是从之前状态边缘化得到的先验残差，$$r_{\mathcal{I}{ij}}$$是IMU预积分残差，$$r_{\mathcal{C}_{ij}}$$是标准的3D-2D重投影误差，$$\rho$$为Cauchy loss来降低外点的权重，$$r_H$$是平面单应性残差：
 
 &#x20;
 
-![](../../.gitbook/assets/rpvio\_5.png)
+![](../../.gitbook/assets/1641957948578.png)
 
 这一项与初始化过程中用的残差很像，除了位姿和平面参数是在body frame系。第p个平面的法向量$$n^p$$和深度$$d^p$$由下式从第一个camera frame $$C_0$$转换到当前body frame $$B_i$$:&#x20;
 
-![](../../.gitbook/assets/rpvio\_6.png)
+![](../../.gitbook/assets/1641958222529.png)
 
 This entire non-linear objective function is minimized iteratively using the Dogleg algorithm with Dense-Schur linear solver implemented in Ceres Solver. 在优化的结尾，滑窗向前移动一帧，来包含最新的帧。丢弃的帧用VINS-Mono的方法被边缘化。优化后的平面参数并没有被丢弃或忽略，而是在再次观察到平面时重复使用。
 
@@ -84,7 +84,7 @@ This entire non-linear objective function is minimized iteratively using the Dog
 
 &#x20;
 
-![](../../.gitbook/assets/rpvio\_7.png)
+![](../../.gitbook/assets/1641958713796.png)
 
 其中n是平面法向量，m是平面的数量（文中设为3），n为一个batch中的图像数量，$$l_i$$是在线生成的inter-plane标签，当$$\angle (n^j_i,n^j_i)  <\frac{\pi}{4}$$时，标签设为1（:confused:这个夹角一直为0吧...），否则设为0.
 

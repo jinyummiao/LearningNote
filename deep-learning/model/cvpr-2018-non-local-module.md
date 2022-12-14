@@ -70,7 +70,7 @@ non-local操作的优势有：1）与渐进地使用卷积或循环网络不同�
 
 作者提出了一种non-local block来融合公式1中的non-local操作：&#x20;
 
-![](<../../.gitbook/assets/image (313).png>)
+![](<../../.gitbook/assets/image (1005).png>)
 
 其中$$y_i$$由公式1给出，$$+x_i$$表示一种残差连接。示例如图2所示。&#x20;
 

@@ -78,13 +78,13 @@ decoder中的最后一层被用于将一堆向量转换回单词。这是通过�
 
 ### 2.Revisiting Transformers for NLP
 
-![](<../../../.gitbook/assets/image (699).png>)
+![](<../../../.gitbook/assets/image (517).png>)
 
 ### 3.Visual Transformer
 
 #### 3.1.Backbone for Image Classification
 
-![](<../../../.gitbook/assets/image (683).png>)
+![](<../../../.gitbook/assets/image (808).png>)
 
 "_Visual transformers: Token-based image representation and processing for computer vision_"中作者利用ResNet作为baseline，用visual transformer代替了卷积的最后一步，更确切的说，他们用卷积层来提取低层的特征，然后将特征输入一个visual transformer。在visual transformer中，作者利用一个tokenizer来将像素聚合成分量的visual tokens，每个token代表一个图像中的小语义信息。transformer用于构建tokens之间的关系，这些语义信息被直接用来图像分类。 而直接用transformer来做图像分类的工作有iGPT，ViT和DeiT。
 

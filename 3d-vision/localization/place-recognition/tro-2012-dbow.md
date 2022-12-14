@@ -24,7 +24,7 @@ description: Bags of Binary Words for Fast Place Recognition in Image Sequences
 
 由于作者使用二进制描述子，所以构建了二进制词典树，使用K-means++ seeding初始化K-means的初始medians，medians中非二进制值得被置为0。 计算两个BoW向量得相似度时使用了L1分数：&#x20;
 
-![](../../../.gitbook/assets/1610877562404.png)
+![](../../../.gitbook/assets/1610877692854.png)
 
 在词典树中，作者使用了inverse index table来保留该单词出现过的图像索引值。当一张新的图像加入database，inverse index table会随之更新。 作者来使用了direct index table，对于每张图像，作者在direct index table中储存了该图像出现过的单词所属的位于l层的节点，以及该节点包含的局部特征。此结构可以用于在获得candidate loop时，准备进行geometrical check时计算同属于一个word或者同属于一个节点的特征的correspondence。
 
