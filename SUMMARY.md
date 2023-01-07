@@ -138,6 +138,7 @@
     * [\[ICCR 2020\] Pole Map](3d-vision/localization/matching-with-map/iccr-2020-pole-map.md)
     * [\[RAL 2018\] X-View](3d-vision/localization/matching-with-map/ral-2018-x-view.md)
     * [\[RAL 2021\] BVMatch](3d-vision/localization/matching-with-map/ral-2021-bvmatch.md)
+    * [\[TITS 2022\] TM3Loc](3d-vision/localization/matching-with-map/tits-2022-tm3loc.md)
 * [Positioning](3d-vision/positioning/README.md)
   * [\[IV 2019\] BEV-IPM](3d-vision/positioning/iv-2019-bev-ipm.md)
 
