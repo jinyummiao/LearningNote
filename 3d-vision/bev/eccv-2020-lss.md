@@ -28,7 +28,7 @@ Let $$X ∈ R^{3×H×W}$$ be an image with extrinsics $$E$$ and intrinsics $$I$$
 
 The context vector for each point in the point cloud is parameterized to match a notion of attention and discrete depth inference. At pixel $$p$$, the network predicts a context $$c ∈ R^C$$ and a distribution over depth $$α ∈ \triangle^{|D|−1}$$ for every pixel. The feature $$c_d ∈ R^C$$ associated to point $$p_d$$ is then defined as the context vector for pixel p scaled by $$α_d$$:
 
-<figure><img src="../../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (65) (1).png" alt=""><figcaption></figcaption></figure>
 
 Our network is therefore in theory capable of choosing between placing context from the image in a specific location of the bird’s-eyeview representation versus spreading the context across the entire ray of space, for instance if the depth is ambiguous.
 

@@ -44,5 +44,45 @@ The contributions of this article are summarized as follows:
 
 ### Problem Formulation
 
-We start by considering the on-board camera pose as the equivalent vehicle pose for this study, as the camera is fixed to the vehicle. As such, the 6-DoF pose of camera frame $$C_t$$ at time t in global frame G is defined as G xCt = {G tCt , G RCt }, where G tCt ∈ R3 represents the translation vector from the origin of G to the origin of Ct , and G RCt ∈ SO(3) represents the 3 × 3 rotation matrix from frame G to frame Ct . The problem of vehicle localization can be defined as the camera pose G xCt estimation relative to the HD map, given the monocular image with HD map landmark observations up to time t.
+We start by considering the on-board camera pose as the equivalent vehicle pose for this study, as the camera is fixed to the vehicle. As such, the 6-DoF pose of camera frame $$C_t$$ at time t in global frame $$G$$ is defined as $$^Gx_{C_t} = \{ ^Gt_{C_t},{}^GR_{C_t} \}$$, where $${}^Gt_{C_t} \in R^3$$ represents the translation vector from the origin of $$G$$ to the origin of $$C_t$$ , and $${}^GR_{C_t} \in SO(3)$$ represents the $$3 \times 3$$ rotation matrix from frame $$G$$ to frame $$C_t$$ . The problem of vehicle localization can be defined as the camera pose $${}^Gx_{C_t}$$ estimation relative to the HD map, given the monocular image with HD map landmark observations up to time $$t$$.
+
+### HD Map Landmark
+
+This study utilizes the lane boundaries and poles for localization because these elements provide the basic localization cues and are commonplace in structured road scenarios. The HD map is denoted as $$M =\{M_i\}$$. Each landmark $$M_i$$ with its semantic category si is modeled as a series of control 3D points $$\{m_{i,j} \in R^3\}_{j=1:N_i}$$ sampled uniformly in the 3D space for a unified representation, with $$N_i$$ as the total number of control points of landmark $$M_i$$ .
+
+In this study, we design a network based on FCN to detect lane boundaries and poles. Thus, this study adopts the semantic segmentation of lane lines and poles as the observation since it provides a straightforward approach to precisely describe the diverse shapes of HD map landmarks.
+
+### Semantic Chamfer Matching
+
+We start by formulating the map matching problem in a single frame HD map observation. Given the initial camera pose $${}^Gx_{C_t}$$ , the 3D vector HD map landmarks points $$m_{i,j} \in M_i$$ can be projected into the image space. The map-matching problem is to find an optimal camera pose $${}^Gx^{∗}_{C_t}$$ which can minimize the cost model $$d$$ between the projected HD map landmark points and their corresponding observations, as formulated in (1):
+
+<figure><img src="../../../.gitbook/assets/image (63).png" alt=""><figcaption></figcaption></figure>
+
+where $$z_{m_{i,j}}$$ is the observation of landmark point $$m_{i, j}$$ in the image $$I_t$$ ,and $$m^{I_t}_{i, j}$$ represent the 2D projection result of $$m_{i, j}$$ given the camera pose $${}^Gx_{C_t}$$ , i.e.:
+
+<figure><img src="../../../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
+
+Suppose the images have been undistorted beforehand, we adopt the pinhole model $$\pi(\cdot): R^3 \rightarrow R^2$$ as the camera model:
+
+<figure><img src="../../../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
+
+where $$K$$ is the intrinsic matrix.
+
+Given the segmentation result $$S_t$$ of frame $$t$$, the cost model of HD map control points $$m_{i, j}$$ with the detection result is formulated as:
+
+<figure><img src="../../../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
+
+The SCM algorithm first generates the distance images $$\{D_{t_s}, s\in S\}$$ for each kind of HD map landmarks from the image segmentation result $$S_t$$ , with $$S$$ as the set of semantic categories of all kinds of HD map landmark features. In this work, $$S =\{LaneBoundary, Pole\}$$. The distance image is formed by augmenting each pixel with its distance to the nearest non-zero pixel. Thus it is essentially a lookup table for querying the nearest distance for all pixels in the image space. Given a set of projected HD map control points $$m^{I_t}_{i, j} = (u,v)$$ with type $$s_i$$ , the nearest distance can be approximated by bi-linear interpolation in $$D^{s_i}_t$$ as shown in (5):
+
+<figure><img src="../../../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
+
+where  $$\overline{u} = \lfloor u \rfloor$$and $$\delta u = u − \overline{u}$$ and the same for $$\overline{v}$$ and $$\delta v$$. $$D^{s_i}_t(\cdot, \cdot)$$ represents the corresponding pixel value in $$D^{s_i}_t$$.
+
+In our implementation, we first separate the segmentation result $$S_t$$ into $$\{S_t^s\}$$ with different semantic categories, and the distance images $$\{D_t^s\}$$ are subsequently computed by the efficient two-pass algorithm \[Parametric correspondence and chamfer matching: Two New techniques for image matching] using the L2 norm with the input of $$\{S_t^s\}$$ respectively.
+
+To tackle the noisy image perception,  a gating operation is applied as the outlier rejection strategy to the distance image $$D_t^s$$, i.e.:
+
+<figure><img src="../../../.gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure>
+
+where $$T$$ is the gating threshold. In our implementation, $$T$$ is set as 20. By using this strategy, the value of areas with distance larger than $$T$$ will be constant and has zero gradient. As a result, the projected HD map points lying within these areas will not be counted in the optimization.
 

@@ -82,7 +82,7 @@ We evaluate the distance estimation performance using the root mean square error
 
 <figure><img src="../../.gitbook/assets/image (104).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (63).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (63) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### BEV Object Detection Evaluation
 

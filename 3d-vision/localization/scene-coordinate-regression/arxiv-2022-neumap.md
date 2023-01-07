@@ -22,7 +22,7 @@ Given a scene represented by a set of reference images $$\{I_n\}$$ with known ca
 
 We achieve visual localization by solving the proxy task of scene coordinate regression on sparse features, where given a set of 2D key-point $$\{k_i\}$$ extracted from $$I_q$$, we predict its corresponding 3D scene coordinate $$\{K_i\}$$. As shown in Figure 2, our method extracts 2D key-points {ki} following HLoc with a pre-trained backbone, R2D2. In order to determine their scene coordinates, we first compute a feature map of the image Iq with a trainable CNN backbone $$F$$, which is a ResNet18 and bilinearly interpolates the feature, and then solve the scene coordinate by a decoder $$D$$ as,
 
-<figure><img src="../../../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (62) (1).png" alt=""><figcaption></figcaption></figure>
 
 Here, $$S$$ is the learned scene representation. Finally, we obtain camera localization by solving a perspective-n-point (PnP) problem with 2D-3D correspondences from $$\{k_i ↔ K_i\}$$.
 
@@ -66,7 +66,7 @@ The scene coordinate loss is defined as,
 
 The second term is a classification loss, i.e., a binary cross entropy, for the confidence $$c^v_i$$ ,
 
-<figure><img src="../../../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (67) (1).png" alt=""><figcaption></figcaption></figure>
 
 The third term enforces sparsity and produces a compressed representation, which is defined as,
 
