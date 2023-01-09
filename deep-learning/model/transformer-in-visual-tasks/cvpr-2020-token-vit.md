@@ -110,6 +110,6 @@ projection过程是有必要的，原特征图中包含着一些细节信息。&
 
 与其他基于attention的增强版ResNet相比较，VT效果更好，FLOP更低。&#x20;
 
-![](<../../../.gitbook/assets/image (29).png>)
+![](<../../../.gitbook/assets/image (29) (3).png>)
 
 在语义分割上，比baseline更好。

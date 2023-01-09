@@ -74,7 +74,7 @@ D2用MegaDepth数据集进行训练，MegaDepth提供了同一场景不同视角
 
 通过该loss可以让descriptor的distinctiveness提升，而为了挑选更具重复性的特征，D2在triple margin loss前加了一个权重&#x20;
 
-![](<../../.gitbook/assets/image (15).png>)
+![](<../../.gitbook/assets/image (15) (1).png>)
 
 这样的话，为了让loss降低，网络需要学习去提取区分度更高（m更小）并且可重复性更好（权重更大）的点，并且优化提取的descriptor。
 

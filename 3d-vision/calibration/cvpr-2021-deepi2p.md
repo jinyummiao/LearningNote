@@ -71,7 +71,7 @@ and the point $$\tilde{P}^′_i$$ is projected into the image coordinate:
 
 Note that homogeneous coordinate is represented by a tilde symbol, e.g., $$\tilde{P}'_i$$ is the homogeneous representation of $$P'_i$$. The inhomogeneous coordinate of the image point is:
 
-<figure><img src="../../.gitbook/assets/image (75).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (75) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### Frustum Classification
 
