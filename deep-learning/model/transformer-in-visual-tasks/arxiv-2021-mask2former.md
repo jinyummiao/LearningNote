@@ -90,7 +90,7 @@ We adopt settings from MaskFormer with the following differences:&#x20;
 
 ![](<../../../.gitbook/assets/image (484).png>)
 
-![](<../../../.gitbook/assets/image (4).png>)
+![](<../../../.gitbook/assets/image (4) (1).png>)
 
 ![](<../../../.gitbook/assets/image (806).png>)
 

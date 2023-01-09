@@ -22,7 +22,7 @@ description: 'CaTiLoc: Camera Image Transformer for Indoor Localization'
 
 ![](<../../../.gitbook/assets/image (502).png>)
 
-![](<../../../.gitbook/assets/image (10).png>)
+![](<../../../.gitbook/assets/image (10) (1).png>)
 
 对比ViT，用CNN提取特征，输入Transformer Encoder，修改了输出维度。
 

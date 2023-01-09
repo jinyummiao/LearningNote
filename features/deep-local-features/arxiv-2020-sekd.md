@@ -80,7 +80,7 @@ SEKD采用了类似于SuperPoint的结构，backbone由1个卷积和9个ResNet\_
 
 $$D_{i,i}$$越低，说明descriptor在相同位置上更靠近，repeatability更好。而对于distinctiveness：&#x20;
 
-![](<../../.gitbook/assets/image (9).png>)
+![](<../../.gitbook/assets/image (9) (1).png>)
 
 $$D_{i,\overline{i}}$$越大，说明descriptor在不同位置的差异越大，distinctiveness更好。所以综合两点，特征的reliability定义为：&#x20;
 

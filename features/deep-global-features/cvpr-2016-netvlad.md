@@ -26,7 +26,7 @@ BoW保留的是视觉单词的数量，而VLAD保留的是每个视觉单词的�
 
 为了让整个过程实现end-to-end训练，需要让VLAD pooling变得可微。而VLAD中不连续的地方在于描述子$$x_i$$到聚类中心$$c_k$$的hard assignment $$a_k(x_i)$$，所以作者用下式代替：&#x20;
 
-![](<../../.gitbook/assets/image (8).png>)
+![](<../../.gitbook/assets/image (8) (1).png>)
 
 其中描述子$$x_k$$到聚类中心$$c_k$$分配的权重不光受它们之间距离的影响，也受描述子到其他聚类中心距离的影响。$$\overline{a_k}(x_i)$$取值在0到1之间，最近的聚类中心被分配为最高的权重。$$\alpha$$是一个正常数。当$$\alpha \rightarrow \infty$$时，soft assignment就是hard assignment。 观察上式，可以化简：&#x20;
 

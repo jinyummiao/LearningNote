@@ -55,7 +55,7 @@ description: 'Patch2Pix: Epipolar-Guided Pixel-Level Correspondences'
 
 **Classification loss** 给定match proposal $$m_i=(x^A_i,y^A_i,x^B_i,y^B_i)$$中的一对patches，当$$\phi_i < \theta_{cls}$$时，定义这一对是positive，即分类标签为$$c^*_i=1$$。这里$$\theta_{cls}$$是用于分类的几何距离阈值。其他对被定义为negative。给定预测的可信度分数C和二进制标签$$C^*$$，加权二进制交叉熵被用于度量分类损失： h
 
-![](<../../.gitbook/assets/image (13).png>)
+![](<../../.gitbook/assets/image (13) (1).png>)
 
 其中权重$$w=|{c^_i|c^i=0}| / |{c^_i|c^i=1}|$$是平衡因子。在mid-level和fine-level分类损失中，作者使用了不同的阈值$$\widehat{\theta_{cls}},\widetilde{\theta_{cls}}$$，两部分损失相加得到总的分类损失$$L_{cls}$$.&#x20;
 

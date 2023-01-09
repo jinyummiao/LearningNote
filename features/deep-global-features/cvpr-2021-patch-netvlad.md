@@ -54,7 +54,7 @@ Patch-NetVLAD计算每对图像间的相似分数，度量了图像间的空间�
 
 当给定一组reference和query特征$${\{f^{r}_{i}\}}^{n_p}_{i=1}$$和$${\{f^{q}_{i}\}}^{n_p}_{i=1}$$(为了方便，假设所有图像都是相同分辨率的)，作者对两张图像的特征描述子进行匹配。得到相互最近邻匹配：&#x20;
 
-![](<../../.gitbook/assets/image (11).png>)
+![](<../../.gitbook/assets/image (11) (1).png>)
 
 #### Spatial Scoring
 

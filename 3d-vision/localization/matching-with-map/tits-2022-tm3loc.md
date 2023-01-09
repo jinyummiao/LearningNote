@@ -86,3 +86,54 @@ To tackle the noisy image perception,  a gating operation is applied as the outl
 
 where $$T$$ is the gating threshold. In our implementation, $$T$$ is set as 20. By using this strategy, the value of areas with distance larger than $$T$$ will be constant and has zero gradient. As a result, the projected HD map points lying within these areas will not be counted in the optimization.
 
+### Tightly-coupled Map-Matching
+
+Since visual feature landmarks only provide constraints in the local coordinate, the full state vector is composed of $$K$$ camera pose states $${}^{C_0}x_C = \{{}^{C_0}x_{C_k} \}_{k=1:K}$$ in the first camera frame $$C_0$$. As the final output of camera pose is in the global frame $$G$$, a global to local 6-DoF transformation state $${}^Gx_{C_0}$$ is also defined in $$X$$ . The states of visual feature landmarks appearing in the sliding window are also included in the inverse depth form. $$\lambda_i$$ is the inverse depth of visual feature landmark $$c_i$$ related to the frame with its first observation. It is important to note that the states of HD map landmarks are not estimated since their prior information is sufficiently accurate. The full state vector $$X$$ is defined as:
+
+<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+
+The system is to find the optimal state vector $$X$$ by minimizes the Mahalanobis distance of all measurement residuals $$r(X)$$ in the sliding window:
+
+<figure><img src="../../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+
+where $$r_C(z^k_{c_i}, X)$$ is the visual landmark residual and $$r_M(z^k_{m_i},X)$$ is the HD map landmark residual. $$C$$ and $$M′$$ are the sets of 3D visual landmarks and HD map landmarks observed in the sliding window. $$\{r_\rho, H_\rho\}$$ is the prior information derived from marginalization during the sliding windowbased optimization. $$\rho(·)$$ is the Huber loss function, a robustify function that makes system robust to outlier noise, as defined in (10):
+
+<figure><img src="../../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+
+with $$\delta$$ as the parameter that can be adjusted for different levels of outlier suppression strength. To optimize the (9), the Levenberg-Marquardt (LM) algorithm is utilized:
+
+<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+where $$J$$ is the jacobian matrix of $$r(X )$$ w.r.t. the state vector $$X$$ . The algorithm iteratively solves for the $$\triangle x$$,and $$X$$ is updated from $$k$$ step to $$k + 1$$ step as follows:
+
+<figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+
+#### Visual Landmark Residual
+
+In our implementation, the visual feature points are detected using Shi-Tomasi algorithm, and tracked using the optical flow. The inverse depth model is adopted to describe the 3D visual landmarks. The observation of visual landmarks is defined in the normalized image plane, which is obtained by applying the inverse camera projection $$\pi^{-1}$$ to “lift” the pixels of observed visual landmarks in the image plane to the camera coordinate with the depth of 1. Considering the visual landmark $$c_i$$ firstly observed in frame $$C_{k_0}$$ , the residual of its observation in frame $$C_k$$ can be defined as:
+
+<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
+where $$z^k_{c_i}$$ and $$z^{k_0}_{c_i}$$ represent the normalized observations of visual feature $$c_i$$ in frame $$C_k$$ and $$C_{k_0}$$ . The Jacobian matrices $$J_{c_i} ({}^{C_0}x_{C_k} )$$ and $$J_{c_i} ({}^{C_0} x_{C_{k_0}} )$$ of $$r_{c_i} (z^k_{c_i} , X )$$ w.r.t. the camera pose $${}^{C_0} x_{C_k}$$ and $${}^{C_0}x_{C_{k_0}}$$ are derived on their $$se(3)$$ Lie Algebra manifold. With $$z$$ denoting the depth of $$p^{C_k}_{c_i}$$, then
+
+<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+where $$[·]_×$$ denotes the skew-symmetric matrix transformation. The Jacobian matrix $$J_{c_i} (λ_i )$$ w.r.t the inverse depth $$λ_i$$ is:
+
+<figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+
+#### HD Map Landmark Residual
+
+First, the sampled control points of the HD map landmarks are transformed from the global coordinate $$G$$ into the local coordinate $$C_0$$ by $${}^Gx_{C_0}$$ , and then projected into the image plane with local camera pose $${}^{C_0} x_{C_k}$$ . For a sample point $$m_{i, j}$$ of HD map landmark $$M_i$$ , given its corresponding observation $$z^k_{m_{i,j}}$$ in frame $$C_k$$, the residual is defined as:
+
+<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+The jacobian matrix $$J_{m_{i, j}} ({}^{C_0} x_{C_k} )$$ and $$J_{m_{i, j}} ({}^G x_{C_0} )$$ w.r.t $${}^{C_0} x_{C_k}$$ and $${}^G x_{C_0}$$ are:
+
+<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>

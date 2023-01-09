@@ -108,7 +108,7 @@ decoder中的最后一层被用于将一堆向量转换回单词。这是通过�
 
 transformer在中等规模数据集上表现与CNNs相近。由于transformers缺少一些CNNs固有的感知偏差——如平移不变性和局部性，所以当训练数据不够多时，它们的泛化性不好。在大规模数据集上，transformer表现得更好。&#x20;
 
-![](<../../../.gitbook/assets/image (12).png>)
+![](<../../../.gitbook/assets/image (12) (1).png>)
 
 **3.1.3.DeiT**
 
