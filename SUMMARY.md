@@ -66,6 +66,7 @@
   * [\[ICCV 2021\] iMAP](3d-vision/nerf/iccv-2021-imap.md)
   * [\[ECCV 2020\] NeRF](3d-vision/nerf/eccv-2020-nerf.md)
   * [\[CVPR 2022\] Mega-NeRF](3d-vision/nerf/cvpr-2022-mega-nerf.md)
+  * [NeRF-based Localization](3d-vision/nerf/nerf-based-localization.md)
 * [BEV](3d-vision/bev/README.md)
   * [\[CVPRW 2021\] HDMapNet](3d-vision/bev/cvprw-2021-hdmapnet.md)
   * [\[ECCV 2020\] LSS](3d-vision/bev/eccv-2020-lss.md)

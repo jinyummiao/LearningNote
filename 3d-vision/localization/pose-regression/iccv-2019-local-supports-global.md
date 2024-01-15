@@ -30,7 +30,7 @@ description: 'Local Supports Global: Deep Camera Relocalization with Sequence En
 
 **Feature Extraction** 用ResNet34来提取图像特征，丢掉全局平均池化层和全连接层，得到3D特征图。因为相机定位和视觉里程计是两个很相关的任务，因此可以共享特征提取网络的参数。记第t帧的特征$$X_t$$，两个连续帧的原始特征在通道维度拼接起来，输入一组残差网络来获得用于VO任务的融合特征$$X^{vo}_t$$_。_&#x20;
 
-**Visual Odometry Estimation** __ 用卷积LSTM来保留特征的空间关联。融合后的特征被输入循环单元中：&#x20;
+**Visual Odometry Estimation** 用卷积LSTM来保留特征的空间关联。融合后的特征被输入循环单元中：&#x20;
 
 ![](../../../.gitbook/assets/1622172897826.png)
 

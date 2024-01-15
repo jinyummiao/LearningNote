@@ -76,7 +76,11 @@ p是cell的中心位置，H是真值homography，所以上式就是判断两个c
 
 在Hpatches数据集上测试了repeatability，在240\*320的图像中提取最多300个点，$$\varepsilon=3$$：&#x20;
 
-![](<../../.gitbook/assets/image (508).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (508).png" alt="">
+
+</div>
 
 #### HPatches Homography Estimation
 
