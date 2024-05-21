@@ -178,3 +178,5 @@
   * [第四曲：杯酒赠汝英雄](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/di-si-qu-bei-jiu-zeng-ru-ying-xiong.md)
   * [第五曲：异乡不解游人思](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/di-wu-qu-yi-xiang-bu-jie-you-ren-si.md)
   * [第六曲：祈得天涯共婵娟](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/di-liu-qu-qi-de-tian-ya-gong-chan-juan.md)
+* [依旧幼稚心事](duo-zai-gu-shi-li-de-ren/yi-jiu-you-zhi-xin-shi.md)
+* [长歌](duo-zai-gu-shi-li-de-ren/chang-ge.md)
