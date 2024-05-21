@@ -165,3 +165,16 @@
   * [\[CVPR 2019\] Cross-Season Correspondence Dataset](deep-learning/dataset/cvpr-2019-cross-season-correspondence-dataset.md)
 * [loss function](deep-learning/loss-function/README.md)
   * [\[CVPR 2019\] AP-Loss](deep-learning/loss-function/cvpr-2019-ap-loss.md)
+
+## 躲在故事里的人
+
+* [写在2024年5月21日](duo-zai-gu-shi-li-de-ren/xie-zai-2024-nian-5-yue-21-ri.md)
+* [出塞曲](duo-zai-gu-shi-li-de-ren/chu-sai-qu.md)
+* [初秋玩闹作罢](duo-zai-gu-shi-li-de-ren/chu-qiu-wan-nao-zuo-ba.md)
+* [莫笑年少人](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/README.md)
+  * [第一曲：我亦风流客](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/di-yi-qu-wo-yi-feng-liu-ke.md)
+  * [第二曲：心戍天山万里疆](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/di-er-qu-xin-shu-tian-shan-wan-li-jiang.md)
+  * [第三曲：一花一诗，一叶一词](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/di-san-qu-yi-hua-yi-shi-yi-ye-yi-ci.md)
+  * [第四曲：杯酒赠汝英雄](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/di-si-qu-bei-jiu-zeng-ru-ying-xiong.md)
+  * [第五曲：异乡不解游人思](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/di-wu-qu-yi-xiang-bu-jie-you-ren-si.md)
+  * [第六曲：祈得天涯共婵娟](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/di-liu-qu-qi-de-tian-ya-gong-chan-juan.md)
