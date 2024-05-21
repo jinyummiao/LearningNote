@@ -168,7 +168,6 @@
 
 ## 躲在故事里的人
 
-* [写在2024年5月21日](duo-zai-gu-shi-li-de-ren/xie-zai-2024-nian-5-yue-21-ri.md)
 * [出塞曲](duo-zai-gu-shi-li-de-ren/chu-sai-qu.md)
 * [初秋玩闹作罢](duo-zai-gu-shi-li-de-ren/chu-qiu-wan-nao-zuo-ba.md)
 * [莫笑年少人](duo-zai-gu-shi-li-de-ren/mo-xiao-nian-shao-ren/README.md)
