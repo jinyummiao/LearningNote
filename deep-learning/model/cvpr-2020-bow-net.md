@@ -86,7 +86,7 @@ description: Learning Representations by Predicting Bags of Visual Words
 
 ![](<../../.gitbook/assets/image (491).png>)
 
-![](<../../.gitbook/assets/image (174).png>)
+![](<../../.gitbook/assets/image (174) (1).png>)
 
 ![](<../../.gitbook/assets/image (873).png>)
 

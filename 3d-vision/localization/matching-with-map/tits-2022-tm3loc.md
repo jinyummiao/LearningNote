@@ -102,7 +102,7 @@ where $$r_C(z^k_{c_i}, X)$$ is the visual landmark residual and $$r_M(z^k_{m_i},
 
 with $$\delta$$ as the parameter that can be adjusted for different levels of outlier suppression strength. To optimize the (9), the Levenberg-Marquardt (LM) algorithm is utilized:
 
-<figure><img src="../../../.gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 where $$J$$ is the jacobian matrix of $$r(X )$$ w.r.t. the state vector $$X$$ . The algorithm iteratively solves for the $$\triangle x$$,and $$X$$ is updated from $$k$$ step to $$k + 1$$ step as follows:
 
@@ -118,9 +118,9 @@ In our implementation, the visual feature points are detected using Shi-Tomasi a
 
 where $$z^k_{c_i}$$ and $$z^{k_0}_{c_i}$$ represent the normalized observations of visual feature $$c_i$$ in frame $$C_k$$ and $$C_{k_0}$$ . The Jacobian matrices $$J_{c_i} ({}^{C_0}x_{C_k} )$$ and $$J_{c_i} ({}^{C_0} x_{C_{k_0}} )$$ of $$r_{c_i} (z^k_{c_i} , X )$$ w.r.t. the camera pose $${}^{C_0} x_{C_k}$$ and $${}^{C_0}x_{C_{k_0}}$$ are derived on their $$se(3)$$ Lie Algebra manifold. With $$z$$ denoting the depth of $$p^{C_k}_{c_i}$$, then
 
-<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (2).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
 
 where $$[·]_×$$ denotes the skew-symmetric matrix transformation. The Jacobian matrix $$J_{c_i} (λ_i )$$ w.r.t the inverse depth $$λ_i$$ is:
 
@@ -134,7 +134,7 @@ First, the sampled control points of the HD map landmarks are transformed from t
 
 The jacobian matrix $$J_{m_{i, j}} ({}^{C_0} x_{C_k} )$$ and $$J_{m_{i, j}} ({}^G x_{C_0} )$$ w.r.t $${}^{C_0} x_{C_k}$$ and $${}^G x_{C_0}$$ are:
 
-<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (2).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
@@ -160,11 +160,11 @@ Since $$H_{M^k}$$ is a symmetric matrix, one can perform Cholesky decomposition 
 
 This transformation indicates that the overall HD map residuals at frame $$k$$ are equivalent to one single residual block $$r$$ satisfying:
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Normally, $$J_{M^k}$$ is relative to $${}^{C_0} x_{C_k}$$ and $${}^G x_{C_0}$$ . As a result, it should be re-calculated after each round of updates in the LM optimization. However, if $${}^{C_0} x_{C_k}$$ and $${}^G x_{C_0}$$ have been optimized several times in the previous sliding window-based optimizations, we can assume that they are already close to the local optimum and therefore will change only a little after each round of update. Under this assumption, the proposed algorithm is to replace $$J_{M^k}$$ by a constant jacobian  $$\overline{J}_{M^k}$$ that is jacobian of the HD map residuals at the initial value $$({}^{C_0̄} \overline{x}_{C_k}$$ , $${}^G \overline{x}_{C_0})$$ before optimization, deriving the linear approximated residual $$r_{LA}$$ as:
 
-<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (3).png" alt=""><figcaption></figcaption></figure>
 
 This approximation avoids the jacobian re-calculation of HD map residuals at each LM optimization round, accelerating the overall state estimation. Notice that the approximation can only be reasonable when the states at frame $$k$$ are lying within the neighborhood of local optimum. To ensure the approximation is not applied on frames that have not been well solved, the algorithm introduces a variable $$n_k$$ for each frame k to record the lifetime of frame $$k$$ in the sliding window. Only frames with $$n_k$$ larger than a threshold $$N_T$$ will be approximated.
 
@@ -172,4 +172,4 @@ In the sliding window-based optimization, the $$K$$ camera poses from the past f
 
 In the cost model (4) of SCM, the data association result is strongly related to the initial guess of the state poses. Thus, in order to reduce the false data association in SCM, a good initial guess of the camera pose is required. Therefore, in our implementation, we have proposed the initial guess generation strategy with the aid of visual features. The strategy predicts the initial guess with the current frame observations of the visual feature landmarks, of which their 3D positions have already been estimated in the sliding window process. The results of this prediction serve as the initial guess for the SCM, thereby helping improve the accuracy in generating the final data association for optimization. The whole tightly-coupled sliding window-based map matching pipeline is outlined in Algorithm 1.
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (174).png" alt=""><figcaption></figcaption></figure>
