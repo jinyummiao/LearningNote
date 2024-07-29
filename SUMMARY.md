@@ -143,6 +143,13 @@
 * [Positioning](3d-vision/positioning/README.md)
   * [\[IV 2019\] BEV-IPM](3d-vision/positioning/iv-2019-bev-ipm.md)
 
+***
+
+* [Vehicle Dynamics](vehicle-dynamics/README.md)
+  * [deep dynamic model](vehicle-dynamics/deep-dynamic-model/README.md)
+    * [\[IROS 2022 \]Deep Pacejka Model](vehicle-dynamics/deep-dynamic-model/iros-2022-deep-pacejka-model.md)
+    * [\[RAL 2024\] Deep Dynamics](vehicle-dynamics/deep-dynamic-model/ral-2024-deep-dynamics.md)
+
 ## DEEP LEARNING
 
 * [model](deep-learning/model/README.md)
