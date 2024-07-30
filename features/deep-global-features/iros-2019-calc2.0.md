@@ -44,7 +44,7 @@ description: >-
 
 根据$$\mu$$的第二种定义，作者计算了残差$$\mu-c$$，其中c是由M x (N+1)个在维度D上学习到的聚类中心在channel维度拼接而成的，它是用一个高斯分布随机初始化得到的，训练去最小化triplet embedding loss。该残差然后利用NetVLAD中的intra-normalization处理，用channel维度的L2-norm来防止描述子崩坏。然后，根据$$\mu$$的第一种定义，作者标准化整个描述子，以适应用内积来计算cosine相似度。采用triplet embedding loss来训练：&#x20;
 
-![](<../../.gitbook/assets/image (7) (1).png>)
+![](<../../.gitbook/assets/image (7) (1) (1).png>)
 
 #### Network Training
 

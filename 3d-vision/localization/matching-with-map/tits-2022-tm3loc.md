@@ -160,7 +160,7 @@ Since $$H_{M^k}$$ is a symmetric matrix, one can perform Cholesky decomposition 
 
 This transformation indicates that the overall HD map residuals at frame $$k$$ are equivalent to one single residual block $$r$$ satisfying:
 
-<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Normally, $$J_{M^k}$$ is relative to $${}^{C_0} x_{C_k}$$ and $${}^G x_{C_0}$$ . As a result, it should be re-calculated after each round of updates in the LM optimization. However, if $${}^{C_0} x_{C_k}$$ and $${}^G x_{C_0}$$ have been optimized several times in the previous sliding window-based optimizations, we can assume that they are already close to the local optimum and therefore will change only a little after each round of update. Under this assumption, the proposed algorithm is to replace $$J_{M^k}$$ by a constant jacobian  $$\overline{J}_{M^k}$$ that is jacobian of the HD map residuals at the initial value $$({}^{C_0̄} \overline{x}_{C_k}$$ , $${}^G \overline{x}_{C_0})$$ before optimization, deriving the linear approximated residual $$r_{LA}$$ as:
 

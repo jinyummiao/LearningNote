@@ -90,7 +90,7 @@ D2采用了VGG-16网络模型（\~conv4\_3），加载ImageNet预训练模型即
 
 ![](../../.gitbook/assets/1638270072937.png)
 
-![](<../../.gitbook/assets/image (6) (1).png>)
+![](<../../.gitbook/assets/image (6) (1) (1).png>)
 
 ![](../../.gitbook/assets/1638270107897.png)
 

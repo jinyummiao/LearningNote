@@ -153,6 +153,7 @@
     * [\[IROS 2019\] Baidu](vehicle-dynamics/deep-dynamic-model/iros-2019-baidu.md)
     * [\[ITSC 2021\] Baidu](vehicle-dynamics/deep-dynamic-model/itsc-2021-baidu.md)
     * [\[IROS 2021\] Baidu DRF](vehicle-dynamics/deep-dynamic-model/iros-2021-baidu-drf.md)
+    * [\[IV 2024\] LVENN](vehicle-dynamics/deep-dynamic-model/iv-2024-lvenn.md)
 
 ## DEEP LEARNING
 
