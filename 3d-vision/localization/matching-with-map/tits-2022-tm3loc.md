@@ -90,15 +90,15 @@ where $$T$$ is the gating threshold. In our implementation, $$T$$ is set as 20. 
 
 Since visual feature landmarks only provide constraints in the local coordinate, the full state vector is composed of $$K$$ camera pose states $${}^{C_0}x_C = \{{}^{C_0}x_{C_k} \}_{k=1:K}$$ in the first camera frame $$C_0$$. As the final output of camera pose is in the global frame $$G$$, a global to local 6-DoF transformation state $${}^Gx_{C_0}$$ is also defined in $$X$$ . The states of visual feature landmarks appearing in the sliding window are also included in the inverse depth form. $$\lambda_i$$ is the inverse depth of visual feature landmark $$c_i$$ related to the frame with its first observation. It is important to note that the states of HD map landmarks are not estimated since their prior information is sufficiently accurate. The full state vector $$X$$ is defined as:
 
-<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (13) (2).png" alt=""><figcaption></figcaption></figure>
 
 The system is to find the optimal state vector $$X$$ by minimizes the Mahalanobis distance of all measurement residuals $$r(X)$$ in the sliding window:
 
-<figure><img src="../../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (11) (2).png" alt=""><figcaption></figcaption></figure>
 
 where $$r_C(z^k_{c_i}, X)$$ is the visual landmark residual and $$r_M(z^k_{m_i},X)$$ is the HD map landmark residual. $$C$$ and $$M′$$ are the sets of 3D visual landmarks and HD map landmarks observed in the sliding window. $$\{r_\rho, H_\rho\}$$ is the prior information derived from marginalization during the sliding windowbased optimization. $$\rho(·)$$ is the Huber loss function, a robustify function that makes system robust to outlier noise, as defined in (10):
 
-<figure><img src="../../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (12) (2).png" alt=""><figcaption></figcaption></figure>
 
 with $$\delta$$ as the parameter that can be adjusted for different levels of outlier suppression strength. To optimize the (9), the Levenberg-Marquardt (LM) algorithm is utilized:
 
@@ -106,15 +106,15 @@ with $$\delta$$ as the parameter that can be adjusted for different levels of ou
 
 where $$J$$ is the jacobian matrix of $$r(X )$$ w.r.t. the state vector $$X$$ . The algorithm iteratively solves for the $$\triangle x$$,and $$X$$ is updated from $$k$$ step to $$k + 1$$ step as follows:
 
-<figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (6) (2).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (10) (2).png" alt=""><figcaption></figcaption></figure>
 
 #### Visual Landmark Residual
 
 In our implementation, the visual feature points are detected using Shi-Tomasi algorithm, and tracked using the optical flow. The inverse depth model is adopted to describe the 3D visual landmarks. The observation of visual landmarks is defined in the normalized image plane, which is obtained by applying the inverse camera projection $$\pi^{-1}$$ to “lift” the pixels of observed visual landmarks in the image plane to the camera coordinate with the depth of 1. Considering the visual landmark $$c_i$$ firstly observed in frame $$C_{k_0}$$ , the residual of its observation in frame $$C_k$$ can be defined as:
 
-<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (2).png" alt=""><figcaption></figcaption></figure>
 
 where $$z^k_{c_i}$$ and $$z^{k_0}_{c_i}$$ represent the normalized observations of visual feature $$c_i$$ in frame $$C_k$$ and $$C_{k_0}$$ . The Jacobian matrices $$J_{c_i} ({}^{C_0}x_{C_k} )$$ and $$J_{c_i} ({}^{C_0} x_{C_{k_0}} )$$ of $$r_{c_i} (z^k_{c_i} , X )$$ w.r.t. the camera pose $${}^{C_0} x_{C_k}$$ and $${}^{C_0}x_{C_{k_0}}$$ are derived on their $$se(3)$$ Lie Algebra manifold. With $$z$$ denoting the depth of $$p^{C_k}_{c_i}$$, then
 
@@ -124,7 +124,7 @@ where $$z^k_{c_i}$$ and $$z^{k_0}_{c_i}$$ represent the normalized observations 
 
 where $$[·]_×$$ denotes the skew-symmetric matrix transformation. The Jacobian matrix $$J_{c_i} (λ_i )$$ w.r.t the inverse depth $$λ_i$$ is:
 
-<figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
 
 #### HD Map Landmark Residual
 
@@ -136,11 +136,11 @@ The jacobian matrix $$J_{m_{i, j}} ({}^{C_0} x_{C_k} )$$ and $$J_{m_{i, j}} ({}^
 
 <figure><img src="../../../.gitbook/assets/image (3) (2).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (9) (2).png" alt=""><figcaption></figcaption></figure>
 
 and $$\frac{\delta D^{s_i}_k}{\delta m^{I_{k}}_{i,j}}$$ is approximated as the pixel gradient of $$D^{s_i}_k$$ at $$m^{I_k}_{i, j}$$ , i.e.:
 
-<figure><img src="../../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (15) (2).png" alt=""><figcaption></figcaption></figure>
 
 In our implementation, the number of sample points of HD map landmark features is around 150 for single frame. As a result, when performing the LM optimization, the HD map landmark residuals and jacobians needs around 150K times calculation for each LM optimization update step, making naive SCM not suitable for tightly-coupled sliding windowbased optimization.
 
@@ -148,7 +148,7 @@ In our implementation, the number of sample points of HD map landmark features i
 
 Next, we introduce the linearization approximation algorithm for accelerating the HD map residual calculation of SCM. Given the set $$M^k$$ of all sample points of HD map landmarks at frame $$k$$,when applying LM optimization algorithm in (11), the corresponding block of HD map residuals is:
 
-<figure><img src="../../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (29) (4).png" alt=""><figcaption></figcaption></figure>
 
 where $$H_{M^k}$$ and $$b_{M^k}$$ are calculated as:
 
@@ -160,7 +160,7 @@ Since $$H_{M^k}$$ is a symmetric matrix, one can perform Cholesky decomposition 
 
 This transformation indicates that the overall HD map residuals at frame $$k$$ are equivalent to one single residual block $$r$$ satisfying:
 
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Normally, $$J_{M^k}$$ is relative to $${}^{C_0} x_{C_k}$$ and $${}^G x_{C_0}$$ . As a result, it should be re-calculated after each round of updates in the LM optimization. However, if $${}^{C_0} x_{C_k}$$ and $${}^G x_{C_0}$$ have been optimized several times in the previous sliding window-based optimizations, we can assume that they are already close to the local optimum and therefore will change only a little after each round of update. Under this assumption, the proposed algorithm is to replace $$J_{M^k}$$ by a constant jacobian  $$\overline{J}_{M^k}$$ that is jacobian of the HD map residuals at the initial value $$({}^{C_0̄} \overline{x}_{C_k}$$ , $${}^G \overline{x}_{C_0})$$ before optimization, deriving the linear approximated residual $$r_{LA}$$ as:
 

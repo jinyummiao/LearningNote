@@ -149,6 +149,10 @@
   * [deep dynamic model](vehicle-dynamics/deep-dynamic-model/README.md)
     * [\[IROS 2022 \]Deep Pacejka Model](vehicle-dynamics/deep-dynamic-model/iros-2022-deep-pacejka-model.md)
     * [\[RAL 2024\] Deep Dynamics](vehicle-dynamics/deep-dynamic-model/ral-2024-deep-dynamics.md)
+    * [\[RCAR 2021\] Cao et al.](vehicle-dynamics/deep-dynamic-model/rcar-2021-cao-et-al..md)
+    * [\[IROS 2019\] Baidu](vehicle-dynamics/deep-dynamic-model/iros-2019-baidu.md)
+    * [\[ITSC 2021\] Baidu](vehicle-dynamics/deep-dynamic-model/itsc-2021-baidu.md)
+    * [\[IROS 2021\] Baidu DRF](vehicle-dynamics/deep-dynamic-model/iros-2021-baidu-drf.md)
 
 ## DEEP LEARNING
 

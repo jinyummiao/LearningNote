@@ -98,7 +98,7 @@ non-local操作的优势有：1）与渐进地使用卷积或循环网络不同�
 
 ### Experiments
 
-![](<../../.gitbook/assets/image (14).png>)
+![](<../../.gitbook/assets/image (14) (1).png>)
 
 ![](<../../.gitbook/assets/image (145).png>)
 

@@ -16,7 +16,7 @@ description: >-
 
 ### Introduction
 
-![](<../../.gitbook/assets/image (24).png>)
+![](<../../.gitbook/assets/image (24) (1).png>)
 
 作者结合全局特征和局部特征的优势，并且尽可能规避它们的缺点。为了实现这一点，作者作出如下贡献：
 
@@ -114,4 +114,4 @@ sptial scoring基于两幅图像中mutual nearest neighboring的patch特征计�
 
 计算消耗时间：&#x20;
 
-![](<../../.gitbook/assets/image (17).png>)
+![](<../../.gitbook/assets/image (17) (1).png>)

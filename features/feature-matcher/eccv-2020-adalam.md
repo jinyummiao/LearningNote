@@ -91,7 +91,7 @@ description: 'AdaLAM: Revisiting Handcrafted Outlier Detection'
 
 ![](<../../.gitbook/assets/image (687).png>)
 
-![](<../../.gitbook/assets/image (22).png>)
+![](<../../.gitbook/assets/image (22) (1).png>)
 
 ![](<../../.gitbook/assets/image (870).png>)
 

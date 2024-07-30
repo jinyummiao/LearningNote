@@ -100,4 +100,4 @@ triplets定义了local pairwise ranking losses，而本文的方法属于listwis
 
 image matching的baseline与VL-Banchmarks一致，用Harris-Affine detector检测点，相对与检测的特征帧，用边缘因子为3提取patches。&#x20;
 
-![](<../../.gitbook/assets/image (21).png>)
+![](<../../.gitbook/assets/image (21) (1).png>)

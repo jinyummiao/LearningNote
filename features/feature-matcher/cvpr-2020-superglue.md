@@ -43,7 +43,7 @@ description: 'SuperGlue: Learning Feature Matching with Graph Neural Networks'
 
 前文提到的两个约束说明correspondence来自对两组keypoint的partial assignment。为了集成到下流任务并且为了更好的可解释性，每个correspondence都应具有一个可信度。因此，作者定义了一个partial soft assignment matrix $$P\in{[0,1]}^{M\times N}$$（**即P中每行和每列都最多只有一个1，即一个匹配**）:&#x20;
 
-![](<../../.gitbook/assets/image (26).png>)
+![](<../../.gitbook/assets/image (26) (1).png>)
 
 本文的目标就是设计一个神经网络，可以根据两组局部特征，来预测P。
 
@@ -73,7 +73,7 @@ description: 'SuperGlue: Learning Feature Matching with Graph Neural Networks'
 
 利用注意力机制来完成聚合和计算信息$$m_{\varepsilon\rightarrow i}$$。self edges基于self-attention，而cross edges基于cross-attention。与数据检索类似，i的一个表征，query $$q_i$$，根据某些元素的性质（key $$k_j$$）检索它们的value $$v_j$$。信息通过计算这些value的加权平均获得：&#x20;
 
-![](<../../.gitbook/assets/image (23).png>)
+![](<../../.gitbook/assets/image (23) (1).png>)
 
 其中，注意力权重$$\alpha_{i,j}$$是在key-query之间相似度上取SoftMax获得的：$$\alpha_{i,j}={Softmax}_j({q_i}^Tk_j)$$. key、query和value通过对图神经网络的深层特征进行线性投影计算获得。令query keypoint i在图像Q上，所有source keypoints在图像S上，$$(Q,S)\in {\{A,B\}}^2$$，则有：&#x20;
 
@@ -85,7 +85,7 @@ description: 'SuperGlue: Learning Feature Matching with Graph Neural Networks'
 
 该模型提供了最大的灵活性，因为网络可以学习关注基于特定属性的关键点子集（如上图）。SuperGlue会基于视觉信息和关键点位置来检索和关注，因此模型可以关注附近点，也会关注相似或显著的点。最终匹配描述子为线性映射：&#x20;
 
-![](<../../.gitbook/assets/image (28).png>)
+![](<../../.gitbook/assets/image (28) (1).png>)
 
 B中关键点也一样。
 

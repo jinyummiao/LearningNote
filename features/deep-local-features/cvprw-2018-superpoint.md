@@ -24,7 +24,7 @@ description: 'SuperPoint: Self-Supervised Interest Point Detection and Descripti
 
 ### Architecture
 
-![](<../../.gitbook/assets/image (3) (1).png>)
+![](<../../.gitbook/assets/image (3) (1) (1).png>)
 
 SuperPoint由一个共享参数的encoder和两个task-specific decoders构成，采用vgg结构，图像(H x W)通过encoder，得到一个1/8大小($$H_c \times W_c$$)的feature map。&#x20;
 

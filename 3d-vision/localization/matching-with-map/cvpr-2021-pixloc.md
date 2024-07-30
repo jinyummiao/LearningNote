@@ -18,7 +18,7 @@ description: 'Back to the Feature: Learning Robust Camera Localization from Pixe
 
 作者认为应当利用图像的先验位姿和场景的3D模型（这些信息一般是可以通过对场景进行重建获得）来进行端到端的位姿回归。并且认为：与其致力于让模型学习基本的几何关系或编码3D地图，还不如让模型根据人们已经很熟悉的几何原理，学习对外观和结构变化的鲁棒性，利用表征学习来解决端到端的定位任务。
 
-![](<../../../.gitbook/assets/image (2) (1).png>)
+![](<../../../.gitbook/assets/image (2) (1) (1).png>)
 
 > In this paper, we introduce a trainable algorithm, PixLoc, that localizes an image by aligning it to an explicit 3D model of the scene based on dense features extracted by a CNN (Figure 1). By relying on classical geometric optimization, the network does not need to learn pose regression itself, but only to extract suitable features, making the algorithm accurate and scene-agnostic. We train PixLoc end-to-end, from pixels to pose, by unrolling the direct alignment and supervising only the pose. Given an initial pose obtained by image retrieval, our formulation results in a simple localization pipeline competitive with complex state-of-the-art approaches, even when the latter are trained specifically per scene. PixLoc can also refine poses estimated by any existing approach as a lightweight post-processing step
 

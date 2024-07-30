@@ -92,7 +92,7 @@ git中主分支为`master`，`HEAD`指向当前分支，`master`指向提交，�
 
 将指定分支上的改动合并到`master`分支上(Fast forward模式，删除分支后，会丢掉分支信息) `git merge <branch name>`&#x20;
 
-![](<../.gitbook/assets/image (5) (1).png>)
+![](<../.gitbook/assets/image (5) (1) (1).png>)
 
 如果不使用Fast forward模式合并分支，会在merge的时候生成一个commit信息 `git merge --no-ff -m "some message" <branch name>`&#x20;
 

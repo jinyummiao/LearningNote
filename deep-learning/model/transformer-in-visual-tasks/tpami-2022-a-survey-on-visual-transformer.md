@@ -182,7 +182,7 @@ IPT（_Pre-trained image processing transformer_）用大数据集预训练，�
 
 （_Sceneformer: Indoor scene generation with transformers_）用于3D室内场景生成。通过将一个场景视为目标的序列，利用transformer的decoder来预测objects的序列和位置、类别和尺寸。&#x20;
 
-![](<../../../.gitbook/assets/image (30).png>)
+![](<../../../.gitbook/assets/image (30) (1).png>)
 
 综上所述，与分类和检测任务不同，图像生成和处理的输出是图像。上图演示了在low-level视觉任务中使用transformer的一般框架。通过将图像作为像素或图像块的序列，transformer encoder使用该序列作为输入，让transformer decoder生成所需的图像。
 
@@ -202,7 +202,7 @@ self-attention是transformer的核心部分。
 
 其中$$x_i\in \mathbb{R}^{1\times c}, y_i \in \mathbb{R}^{1\times c}$$表示输入信号X和输出信号Y中的第i个位置。下标j遍历了全部位置。一个pairwise的函数$$f(\cdot)$$计算出i和所有j之间的表征相关性。$$g(\cdot)$$计算了输入信号在j处的表征。响应被$$C(x_i)$$归一化。 要注意pairwise函数$$f(\cdot)$$有很多选择，比如：&#x20;
 
-![](<../../../.gitbook/assets/image (27).png>)
+![](<../../../.gitbook/assets/image (27) (1).png>)
 
 其中$$\theta(\cdot), \phi(\cdot)$$可以是任何embedding层。如果我们假设$$\theta(\cdot), \phi(\cdot), g(\cdot)$$都是线性embedding：$$\theta(X)=XW_{\theta}, \phi(X)=XW_{\phi}, g(X)=XW_{g}$$，其中
 

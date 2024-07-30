@@ -52,7 +52,7 @@ DCN通过额外学习了采样的偏置（$${\triangle p_n | n=1,...,N}$$）和�
 
 原本的free-form DCN预测高自由度的局部变换，比如对一个3x3核的9x2个偏置。一方面，它能够模拟复杂的变形，如非平面性，而另一方面，它承担了对local shape过度参数化的风险，其中简单的仿射或透视变换往往被认为是一个很好的近似。为了找出在本文中什么样的deformable是必要的，作者通过在DCN中设置不同的几何约束，比较了三种shap建模，包括1）similarity，2）affine，3）homography，每种shape的特性如下表所示：
 
-![](<../../.gitbook/assets/image (31).png>)
+![](<../../.gitbook/assets/image (31) (1).png>)
 
 **Affine-constrained DCN** 局部shape经常通过similarity transformation来建模，估计旋转和尺度。这种变换可以分解为：&#x20;
 

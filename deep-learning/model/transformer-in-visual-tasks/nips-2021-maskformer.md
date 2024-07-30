@@ -52,7 +52,7 @@ MaskFormer模型输出N个概率-mask对$$z={{(p_i,m_i)}}^N_{i=1}$$，该模型�
 
 实验中的结构细节：&#x20;
 
-![](<../../../.gitbook/assets/image (18).png>)
+![](<../../../.gitbook/assets/image (18) (1).png>)
 
 作者发现最好不用softmax去让mask彼此排斥。在训练师，损失函数包含每个预测分割的交叉熵分类损失和二进制mask损失。简单起见，作者用DETR的$$L_{mask}$$，即focal loss和dice loss的线性组合。
 
